@@ -6,6 +6,7 @@ package stechb.myfirstapp;
 public class Meal {
     private String name;
     private String recipe;
+    private boolean veggie;
 
     public Meal(String name,String recipe){
 
@@ -19,4 +20,5 @@ public class Meal {
     public String getRecipe(){
         return this.recipe;
     }
+    public boolean isVeggie() { return this.veggie; }
 }
