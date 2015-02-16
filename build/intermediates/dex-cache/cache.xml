@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Stefan\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Stefan\AndroidStudioProjects\MyFirstApp\app\build\intermediates\pre-dexed\debug\classes-ca00a38bc82e42b0f366d9b5e5ed8425b1684bb5.jar" />
+        <dex dex="C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\pre-dexed\debug\classes-3abdc98ac152b6a1b224d3cbece04ed605eb86a4.jar" />
     </item>
     <item
-        jar="D:\Programmes\Android Studio\Android SDK\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Stefan\AndroidStudioProjects\MyFirstApp\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-0272b692104ccf56da1b658e581aaf40bfe77750.jar" />
-    </item>
-    <item
-        jar="C:\Users\Stefan\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Stefan\AndroidStudioProjects\MyFirstApp\app\build\intermediates\pre-dexed\debug\classes-8b5c2b1d4be7a4b242881372ef785e89c499e993.jar" />
+        <dex dex="C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\pre-dexed\debug\classes-523f70ba0152f0ad9065c1ef78784e59c564b837.jar" />
     </item>
     <item
-        jar="C:\Users\Stefan\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Stefan\AndroidStudioProjects\MyFirstApp\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-0d68f51a3ee791d660eabe5396a351bc04ebd507.jar" />
+        <dex dex="C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-cad0413609827927e3952df3a7b1da5cdf60630a.jar" />
+    </item>
+    <item
+        jar="C:\Users\iange_000\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-333cacb1e75cf72b7ea5235c4877a12f2df9b0ee.jar" />
     </item>
 
 </items>

@@ -54,9 +54,9 @@ public class MainActivity extends ActionBarActivity {
             //throw new Error ("unable to create database");
         }
         db.openDataBase();
-        String meal = db.getMealFromDB();
+        Meal meal = db.getRandomMeal();
 
-        intent.putExtra(EXTRA_MESSAGE, meal);
+        intent.putExtra(EXTRA_MESSAGE, meal.getName());
         startActivity(intent);
         db.close();
     }
