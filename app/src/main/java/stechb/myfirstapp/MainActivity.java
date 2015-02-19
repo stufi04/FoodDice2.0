@@ -1,13 +1,21 @@
 package stechb.myfirstapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -19,6 +27,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Drawable myDrawable = getResources().getDrawable(R.drawable.healthy_meal);
+        Bitmap bmp = ((BitmapDrawable) myDrawable).getBitmap();
+        ImageView titleScreen = (ImageView) findViewById(R.id.title_image);
+        titleScreen.setImageBitmap(bmp);
     }
 
 
@@ -44,7 +57,7 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void chooseRandom(View view) {
+    public void chooseRandom(View view) throws FileNotFoundException {
         Intent intent = new Intent(this, ShowChosen.class);
         DataBaseHelper db = new DataBaseHelper(this);
         try {
@@ -56,9 +69,13 @@ public class MainActivity extends ActionBarActivity {
         db.openDataBase();
         Meal meal = db.getRandomMeal();
 
+        //sampleImage for testing the intent with a bitmap
+        Drawable myDrawable = getResources().getDrawable(R.drawable.mona_lisa);
+        Bitmap sampleImage = ((BitmapDrawable) myDrawable).getBitmap();
+
         intent.putExtra(EXTRA_MESSAGE, meal.getName());
         intent.putExtra("recipe",meal.getRecipe());
-        intent.putExtra("image",meal.getImage());
+        intent.putExtra("image", meal.getImage() /*sampleImage*/);
         startActivity(intent);
         db.close();
     }

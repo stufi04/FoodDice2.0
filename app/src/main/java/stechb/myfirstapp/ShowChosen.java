@@ -1,10 +1,13 @@
 package stechb.myfirstapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -19,6 +22,8 @@ public class ShowChosen extends ActionBarActivity {
         textView.setTextSize(40);
         textView.setText(meal);
         setContentView(textView);
+        //ImageView mealView = (ImageView) findViewById(R.id.show_meal);
+        //mealView.setImageBitmap(null);
     }
 
 
