@@ -6,6 +6,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -149,6 +151,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             String name = "";
             String recipe = "";
+            Bitmap image = null;
+            byte[] byteArray = null;
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
 
@@ -169,8 +173,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             name = String.valueOf(c.getString(1));
             recipe = String.valueOf(c.getString(2));
+            byteArray = c.getBlob(3);
             db.close();
-
+            Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
             Meal meal = new Meal(name,recipe);
             return meal;
         }
