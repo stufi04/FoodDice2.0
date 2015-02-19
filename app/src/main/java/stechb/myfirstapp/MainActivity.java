@@ -57,6 +57,8 @@ public class MainActivity extends ActionBarActivity {
         Meal meal = db.getRandomMeal();
 
         intent.putExtra(EXTRA_MESSAGE, meal.getName());
+        intent.putExtra("recipe",meal.getRecipe());
+        intent.putExtra("image",meal.getImage());
         startActivity(intent);
         db.close();
     }
