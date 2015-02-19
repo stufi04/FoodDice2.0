@@ -174,10 +174,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             name = String.valueOf(c.getString(1));
             recipe = String.valueOf(c.getString(2));
             byteArray = c.getBlob(3);
+            c.close();
             db.close();
+            try{
             Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            Meal meal = new Meal(name,recipe,image);
-            return meal;
+            Meal meal = new Meal(name,recipe,bmp);
+            return meal;}
+            catch (Exception e){
+                Meal meal = new Meal(name,recipe,null);
+                return meal;
+            }
         }
         catch (Exception e) {e = new Exception("cannot get meal from DB");}
         return null;
