@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 
 public class ShowChosen extends ActionBarActivity {
 
@@ -17,13 +19,30 @@ public class ShowChosen extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        String meal = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        Meal meal = chooseRandom();
         TextView textView = new TextView(this);
         textView.setTextSize(40);
-        textView.setText(meal);
+        textView.setText(meal.getName());
         setContentView(textView);
-        //ImageView mealView = (ImageView) findViewById(R.id.show_meal);
-        //mealView.setImageBitmap(null);
+        ImageView mealView = (ImageView) findViewById(R.id.show_meal);
+        // TODO change null to meal.getImage()
+        // mealView.setImageBitmap(null);
+    }
+
+    public Meal chooseRandom () {
+
+        DataBaseHelper db = new DataBaseHelper(this);
+        try {
+            db.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+            //throw new Error ("unable to create database");
+        }
+        db.openDataBase();
+        Meal meal = db.getRandomMeal();
+        db.close();
+        return meal;
+
     }
 
 

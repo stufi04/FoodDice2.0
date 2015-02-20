@@ -59,25 +59,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void chooseRandom(View view) throws FileNotFoundException {
         Intent intent = new Intent(this, ShowChosen.class);
-        DataBaseHelper db = new DataBaseHelper(this);
-        try {
-            db.createDataBase();
-        } catch (IOException e) {
-            e.printStackTrace();
-            //throw new Error ("unable to create database");
-        }
-        db.openDataBase();
-        Meal meal = db.getRandomMeal();
-
-        //sampleImage for testing the intent with a bitmap
-        //Drawable myDrawable = getResources().getDrawable(R.drawable.mona_lisa);
-        //Bitmap sampleImage = ((BitmapDrawable) myDrawable).getBitmap();
-
-        intent.putExtra(EXTRA_MESSAGE, meal.getName());
-        intent.putExtra("recipe",meal.getRecipe());
-        intent.putExtra("image", meal.getImage() /*sampleImage*/);
         startActivity(intent);
-        db.close();
     }
 
     public void setRandom(View view) {
