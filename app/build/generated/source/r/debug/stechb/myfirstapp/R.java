@@ -1300,8 +1300,10 @@ containing a value of this type.
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020031;
         public static final int abc_textfield_search_material=0x7f020032;
         public static final int ariana=0x7f020033;
-        public static final int healthy_meal=0x7f020034;
-        public static final int ic_launcher=0x7f020035;
+        public static final int chicken_meal=0x7f020034;
+        public static final int healthy_meal=0x7f020035;
+        public static final int ic_launcher=0x7f020036;
+        public static final int mona_lisa=0x7f020037;
     }
     public static final class id {
         public static final int action_bar=0x7f080031;
@@ -1317,12 +1319,12 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f08002e;
         public static final int action_mode_bar_stub=0x7f08002d;
         public static final int action_mode_close_button=0x7f080020;
-        public static final int action_settings=0x7f080042;
+        public static final int action_settings=0x7f080044;
         public static final int activity_chooser_view_content=0x7f080021;
         public static final int always=0x7f080016;
         public static final int backgroundMainActivity=0x7f08003f;
         public static final int beginning=0x7f080013;
-        public static final int btnRandom=0x7f080040;
+        public static final int btnRandom=0x7f080041;
         public static final int checkbox=0x7f080029;
         public static final int collapseActionView=0x7f080017;
         public static final int decor_content_parent=0x7f08002f;
@@ -1341,6 +1343,7 @@ containing a value of this type.
         public static final int image=0x7f080023;
         public static final int listMode=0x7f080009;
         public static final int list_item=0x7f080025;
+        public static final int meal_image=0x7f080043;
         public static final int middle=0x7f080015;
         public static final int never=0x7f080019;
         public static final int none=0x7f08000e;
@@ -1362,11 +1365,12 @@ containing a value of this type.
         public static final int showCustom=0x7f08000f;
         public static final int showHome=0x7f080010;
         public static final int showTitle=0x7f080011;
-        public static final int show_meal=0x7f080041;
+        public static final int show_meal=0x7f080042;
         public static final int split_action_bar=0x7f080007;
         public static final int submit_area=0x7f08003c;
         public static final int tabMode=0x7f08000b;
         public static final int title=0x7f080027;
+        public static final int title_image=0x7f080040;
         public static final int up=0x7f080008;
         public static final int useLogo=0x7f080012;
         public static final int withText=0x7f08001a;

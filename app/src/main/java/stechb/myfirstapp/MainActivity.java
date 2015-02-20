@@ -70,8 +70,8 @@ public class MainActivity extends ActionBarActivity {
         Meal meal = db.getRandomMeal();
 
         //sampleImage for testing the intent with a bitmap
-        Drawable myDrawable = getResources().getDrawable(R.drawable.mona_lisa);
-        Bitmap sampleImage = ((BitmapDrawable) myDrawable).getBitmap();
+        //Drawable myDrawable = getResources().getDrawable(R.drawable.mona_lisa);
+        //Bitmap sampleImage = ((BitmapDrawable) myDrawable).getBitmap();
 
         intent.putExtra(EXTRA_MESSAGE, meal.getName());
         intent.putExtra("recipe",meal.getRecipe());

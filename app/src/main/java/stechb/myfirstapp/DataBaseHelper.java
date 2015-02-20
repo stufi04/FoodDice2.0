@@ -125,7 +125,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
 
-            String query = "SELECT * FROM recipes WHERE 1";
+            String query = "SELECT * FROM recipes WHERE recipes.name = 'testname';";
 
 
             Cursor c = db.rawQuery(query, null);
@@ -171,11 +171,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Integer r = new Integer((int) (Math.random() * i-1));
             c.move(r);
 
+
             name = String.valueOf(c.getString(1));
             recipe = String.valueOf(c.getString(2));
             byteArray = c.getBlob(3);
             c.close();
             db.close();
+
             try{
             Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
             Meal meal = new Meal(name,recipe,bmp);
