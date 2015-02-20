@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -24,9 +25,13 @@ public class ShowChosen extends ActionBarActivity {
         textView.setTextSize(40);
         textView.setText(meal.getName());
         setContentView(textView);
-        ImageView mealView = (ImageView) findViewById(R.id.show_meal);
+        ImageView mealView ;
+        setContentView(R.layout.chosen_show);
+        mealView = (ImageView) findViewById(R.id.meal_image);
+        Log.d("2nACT"," "+meal.getImage().getByteCount());
         // TODO change null to meal.getImage()
-        // mealView.setImageBitmap(null);
+        mealView.setImageBitmap(meal.getImage());
+
     }
 
     public Meal chooseRandom () {

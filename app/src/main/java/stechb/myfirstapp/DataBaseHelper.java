@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -153,6 +154,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String recipe = "";
             Bitmap image = null;
             byte[] byteArray = null;
+            Integer id ;
+
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
 
@@ -168,22 +171,29 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             }
             c.moveToFirst();
-            Integer r = new Integer((int) (Math.random() * i-1));
-            c.move(r);
+
+                Integer r = new Integer((int) (Math.random() * i - 1));
+                c.move(r);
+                name = String.valueOf(c.getString(1));
 
 
-            name = String.valueOf(c.getString(1));
+
             recipe = String.valueOf(c.getString(2));
+
             byteArray = c.getBlob(3);
             c.close();
             db.close();
 
+
             try{
             Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
             Meal meal = new Meal(name,recipe,bmp);
+                Log.d("MYMSG","FROM TRY"+bmp.getByteCount());
             return meal;}
             catch (Exception e){
+                e.printStackTrace();
                 Meal meal = new Meal(name,recipe,null);
+                Log.d("MYMSG","FROM FROMCATCH");
                 return meal;
             }
         }
