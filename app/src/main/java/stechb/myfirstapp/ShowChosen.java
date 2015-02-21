@@ -21,16 +21,16 @@ public class ShowChosen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         Meal meal = chooseRandom();
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(meal.getName());
-        setContentView(textView);
         ImageView mealView ;
         setContentView(R.layout.chosen_show);
         mealView = (ImageView) findViewById(R.id.meal_image);
-        Log.d("2nACT"," "+meal.getImage().getByteCount());
-        // TODO change null to meal.getImage()
-        mealView.setImageBitmap(meal.getImage());
+        if(meal.getImage()!=null)mealView.setImageBitmap(meal.getImage());
+        TextView textView = (TextView) findViewById(R.id.name_view);
+        textView.setTextSize(40);
+        textView.setText(meal.getName());
+
+
+
 
     }
 
