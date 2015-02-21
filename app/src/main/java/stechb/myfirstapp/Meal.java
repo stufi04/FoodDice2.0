@@ -7,6 +7,8 @@ import java.util.ArrayList;
 /**
  * Created by iange_000 on 10-Feb-15.
  */
+
+//stufiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 public class Meal {
     private String name;
     private String recipe;
