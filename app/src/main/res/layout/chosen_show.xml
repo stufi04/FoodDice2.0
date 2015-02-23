@@ -17,7 +17,6 @@
 
         android:padding="9dp"
         android:adjustViewBounds="true"
-
         android:layout_marginBottom="52dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
@@ -33,6 +32,6 @@
         android:gravity="center"
         android:textColor="#0D4D4D"
 
-       />
+        android:minHeight="150dp" />
 
 </RelativeLayout>
