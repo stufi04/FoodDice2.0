@@ -159,7 +159,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
 
-            String query = "SELECT * FROM recipes WHERE _id = 60";
+            String query = "SELECT * FROM recipes WHERE 1";
 
 
             Cursor c = db.rawQuery(query, null);
