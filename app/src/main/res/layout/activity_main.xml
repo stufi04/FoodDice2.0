@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_vertical" >
+    android:gravity="center_vertical"
+    android:background="@drawable/cooking">
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="fill_parent"
         android:layout_height="300dp"
-        android:id="@+id/title_image"/>
+        android:id="@+id/title_image"/> -->
 
     <Button
         android:id="@+id/btnRandom"

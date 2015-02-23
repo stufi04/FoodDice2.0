@@ -30,8 +30,8 @@ public class MainActivity extends ActionBarActivity {
 
         Drawable myDrawable = getResources().getDrawable(R.drawable.healthy_meal);
         Bitmap bmp = ((BitmapDrawable) myDrawable).getBitmap();
-        ImageView titleScreen = (ImageView) findViewById(R.id.title_image);
-        titleScreen.setImageBitmap(bmp);
+        //ImageView titleScreen = (ImageView) findViewById(R.id.title_image);
+        //titleScreen.setImageBitmap(bmp);
     }
 
 

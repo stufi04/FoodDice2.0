@@ -24,7 +24,7 @@ public class ShowChosen extends ActionBarActivity {
         setContentView(R.layout.chosen_show);
         ImageView mealView ;
         mealView = (ImageView) findViewById(R.id.meal_image);
-        if(meal.getImage()!=null)mealView.setImageBitmap(meal.getImage());
+        if(meal.getImage()!=null) mealView.setImageBitmap(meal.getImage());
         TextView textView = (TextView) findViewById(R.id.name_view);
         textView.setTextSize(40);
         textView.setText(meal.getName());
