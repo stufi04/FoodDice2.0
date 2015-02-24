@@ -1,5 +1,6 @@
 package stechb.myfirstapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 import java.io.IOException;
 
 
-public class ShowChosen extends ActionBarActivity {
+public class ShowChosen extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -31,6 +31,8 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:textColor="#0D4D4D"
+        android:shadowColor="#FFF"
+        android:shadowRadius="10.0"
 
         android:minHeight="150dp" />
 
