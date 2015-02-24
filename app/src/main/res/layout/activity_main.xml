@@ -16,7 +16,8 @@
         android:id="@+id/btnRandom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Random"
+        android:text="Random meal"
+        android:textColor="#0D4D4D"
         android:layout_gravity="center"
         android:onClick="chooseRandom" />
 
@@ -30,13 +31,15 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Not so random"
+                android:text="Advanced"
+                android:textColor="#0D4D4D"
                 android:onClick="setRandom"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Settings"
+                android:textColor="#0D4D4D"
                 android:onClick="openSettings"/>
 
     </LinearLayout>
