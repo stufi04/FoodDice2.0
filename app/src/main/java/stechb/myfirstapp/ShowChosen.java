@@ -1,9 +1,12 @@
 package stechb.myfirstapp;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,32 +29,39 @@ ViewGroup thisLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        Meal meal = chooseRandom();
-        setContentView(R.layout.chosen_show);
-        ImageView mealView;
+
+        showNewRandomMeal();
+        swipeMethod();
+
+    }
+
+    public void swipeMethod () {
+        final Intent intent = new Intent(this, ShowRecipe.class);
+        final Intent intentSame = new Intent(this, ShowChosen.class);
+
         thisLayout = (ViewGroup) findViewById(R.id.thisLayout);
-        mealView = (ImageView) findViewById(R.id.meal_image);
-        if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
-        final TextView textView = (TextView) findViewById(R.id.name_view);
-        textView.setTextSize(40);
-        textView.setText(meal.getName());
         thisLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
             public void onSwipeLeft() {
-
+                startActivity(intentSame);
+                //showNewRandomMeal();
             }
 
             @Override
             public void onSwipeRight() {
-
+                startActivity(intent);
             }
-
-
         });
-
     }
-
+    public void showNewRandomMeal () {
+        Meal meal = chooseRandom();
+        setContentView(R.layout.chosen_show);
+        ImageView mealView = (ImageView) findViewById(R.id.meal_image);
+        if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
+        final TextView textView = (TextView) findViewById(R.id.name_view);
+        textView.setTextSize(40);
+        textView.setText(meal.getName());
+    }
 
     public Meal chooseRandom() {
 
