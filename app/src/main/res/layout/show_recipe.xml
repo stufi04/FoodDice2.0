@@ -64,7 +64,8 @@
         android:textSize="20dp"
         android:scrollbars="vertical"
         android:nestedScrollingEnabled="true"
+        android:layout_marginTop="15dp"
         android:background= "#44FFFFFF"
-        android:layout_marginTop="15dp"/>
+        />
 
 </RelativeLayout>

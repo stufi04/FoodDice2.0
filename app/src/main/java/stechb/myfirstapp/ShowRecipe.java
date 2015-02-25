@@ -35,7 +35,8 @@ public class ShowRecipe extends Activity {
         if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
         mealName.setText(meal.getName());
         mealRecipe.setText(meal.getRecipe());
-       // mealIngr.setText("Ingridients to come here");
+        // getting rid of ingredients for now (had to write a stupid to comment so that the file changes so that i can commit...)
+        // mealIngr.setText("Ingridients to come here");
         //TODO add meal.getIngr when implemented
         mealRecipe.setMovementMethod(new ScrollingMovementMethod());
        // mealIngr.setMovementMethod(new ScrollingMovementMethod());
