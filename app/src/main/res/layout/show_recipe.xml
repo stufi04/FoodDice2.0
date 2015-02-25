@@ -61,7 +61,7 @@
         android:gravity="center"
         android:shadowColor="#FFF"
         android:shadowRadius="10.0"
-        android:textColor="#407F7F"
+        android:textColor="#0D4D4D"
         android:textSize="20dp"
         android:scrollbars="vertical"
         android:nestedScrollingEnabled="true"
