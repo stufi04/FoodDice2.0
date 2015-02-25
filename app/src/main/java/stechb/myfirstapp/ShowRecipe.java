@@ -3,6 +3,7 @@ package stechb.myfirstapp;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -24,16 +25,20 @@ public class ShowRecipe extends Activity {
         showNewMealById(id);
 
     }
-    public int showNewMealById (int id) {
+    public void showNewMealById (int id) {
         ImageView mealView = (ImageView) findViewById(R.id.mealIcon);
         TextView mealName = (TextView) findViewById(R.id.mealName);
         TextView mealRecipe = (TextView) findViewById(R.id.mealRecipe);
+        TextView mealIngr = (TextView) findViewById(R.id.mealIngr);
 
         Meal meal = chooseByID(id);
         if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
         mealName.setText(meal.getName());
         mealRecipe.setText(meal.getRecipe());
-        return meal.getId();
+        mealIngr.setText("Ingridients to come here");
+        //TODO add meal.getIngr when implemented
+        mealRecipe.setMovementMethod(new ScrollingMovementMethod());
+        mealIngr.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public Meal chooseByID(int id) {
