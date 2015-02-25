@@ -28,7 +28,9 @@
         android:gravity="center"
         android:shadowColor="#FFF"
         android:shadowRadius="10.0"
-        android:textColor="#407F7F" />
+        android:textColor="#407F7F"
+        android:background="#4FFF"
+        android:textSize="23sp" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -43,7 +45,8 @@
         android:gravity="center"
         android:shadowColor="#FFF"
         android:shadowRadius="10.0"
-        android:textColor="#407F7F" />
+        android:textColor="#407F7F"
+        android:background="#4FFF" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -62,5 +65,5 @@
         android:textSize="20dp"
         android:scrollbars="vertical"
         android:nestedScrollingEnabled="true"
-        />
+        android:background="#4FFF" />
 </RelativeLayout>
