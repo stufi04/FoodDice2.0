@@ -9,7 +9,8 @@
     tools:context="stechb.myfirstapp.ShowChosen.java"
     android:gravity="center"
     android:background="@drawable/cooking"
-    android:id="@+id/thisLayout">
+    android:id="@+id/thisLayout"
+   >
 
     <ImageView
         android:layout_height="278dp"

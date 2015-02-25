@@ -1,11 +1,16 @@
 package stechb.myfirstapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import android.app.Activity;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.io.IOException;
 
 
 public class ShowRecipe extends Activity {
@@ -14,6 +19,37 @@ public class ShowRecipe extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_recipe);
+        Intent intent = getIntent();
+        int id = intent.getIntExtra("MEALID",0);
+        showNewMealById(id);
+
+    }
+    public int showNewMealById (int id) {
+        ImageView mealView = (ImageView) findViewById(R.id.mealIcon);
+        TextView mealName = (TextView) findViewById(R.id.mealName);
+        TextView mealRecipe = (TextView) findViewById(R.id.mealRecipe);
+
+        Meal meal = chooseByID(id);
+        if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
+        mealName.setText(meal.getName());
+        mealRecipe.setText(meal.getRecipe());
+        return meal.getId();
+    }
+
+    public Meal chooseByID(int id) {
+
+        DataBaseHelper db = new DataBaseHelper(this);
+        try {
+            db.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+            //throw new Error ("unable to create database");
+        }
+        db.openDataBase();
+        Meal meal = db.getMealById(id);
+        db.close();
+        return meal;
+
     }
 
 

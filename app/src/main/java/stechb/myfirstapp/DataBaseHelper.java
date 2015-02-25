@@ -149,12 +149,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     public Meal getRandomMeal(){
         try {
-
+            int id;
             String name = "";
             String recipe = "";
             Bitmap image = null;
             byte[] byteArray = null;
-            Integer id ;
+
 
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
@@ -175,8 +175,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 Integer r = new Integer((int) (Math.random() * i - 1));
                 c.move(r);
                 name = String.valueOf(c.getString(1));
-
-
+                id = c.getInt(0);
 
             recipe = String.valueOf(c.getString(2));
 
@@ -187,17 +186,64 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             try{
             Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            Meal meal = new Meal(name,recipe,bmp);
+            Meal meal = new Meal(id,name,recipe,bmp);
                 Log.d("MYMSG","FROM TRY"+bmp.getByteCount());
             return meal;}
             catch (Exception e){
                 e.printStackTrace();
-                Meal meal = new Meal(name,recipe,null);
+                Meal meal = new Meal(id,name,recipe,null);
                 Log.d("MYMSG","FROM FROMCATCH");
                 return meal;
             }
         }
         catch (Exception e) {e = new Exception("cannot get meal from DB");}
         return null;
+    }
+    Meal getMealById(int idOut){
+        try{
+        int id;
+        String name = "";
+        String recipe = "";
+        Bitmap image = null;
+        byte[] byteArray = null;
+
+
+        createDataBase();
+        SQLiteDatabase db = getReadableDatabase();
+
+        String query = "SELECT * FROM recipes WHERE _id = "+idOut;
+
+
+        Cursor c = db.rawQuery(query, null);
+
+
+        c.moveToFirst();
+
+
+
+        name = String.valueOf(c.getString(1));
+        id = c.getInt(0);
+
+        recipe = String.valueOf(c.getString(2));
+
+        byteArray = c.getBlob(3);
+        c.close();
+        db.close();
+
+
+        try{
+            Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            Meal meal = new Meal(id,name,recipe,bmp);
+            Log.d("MYMSG","FROM TRY"+bmp.getByteCount());
+            return meal;}
+        catch (Exception e){
+            e.printStackTrace();
+            Meal meal = new Meal(id,name,recipe,null);
+            Log.d("MYMSG","FROM FROMCATCH");
+            return meal;
+        }
+    }
+    catch (Exception e) {e = new Exception("cannot get meal from DB");}
+    return null;
     }
 }

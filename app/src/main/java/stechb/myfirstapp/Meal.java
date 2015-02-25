@@ -17,10 +17,11 @@ public class Meal {
     private boolean pork;
     private boolean fish;
     private Bitmap image;
+    private int id;
     public static ArrayList<String> lastFive = new ArrayList<>();
 
-    public Meal(String name,String recipe,Bitmap image){
-
+    public Meal(int id,String name,String recipe,Bitmap image){
+        this.id = id;
         this.name = name;
         this.recipe = recipe;
         this.image = image;
@@ -38,6 +39,7 @@ public class Meal {
     public boolean isBeef() { return this.beef; }
     public boolean isFish() { return this.fish; }
     public Bitmap getImage(){return  this.image;}
+    public int getId() {return this.id;}
     public static ArrayList getLastFive() {return lastFive;}
     public static Boolean custContains(String name){
         boolean contains = false;

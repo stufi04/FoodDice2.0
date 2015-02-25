@@ -24,20 +24,22 @@ import java.io.IOException;
 
 
 public class ShowChosen extends Activity{
-
+   static int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chosen_show);
 
-        showNewRandomMeal();
+        id = showNewRandomMeal();
         swipeMethod();
 
     }
 
     public void swipeMethod () {
 
+
         final Intent intent = new Intent(this, ShowRecipe.class);
+        intent.putExtra("MEALID",ShowChosen.id);
         // final Intent intentSame = new Intent(this, ShowChosen.class);
 
         View thisLayout = (View) findViewById(R.id.thisLayout);
@@ -45,13 +47,15 @@ public class ShowChosen extends Activity{
             @Override
             public boolean onSwipeLeft() {
                 //startActivity(intentSame);
-                showNewRandomMeal();
-                Log.d("Swipes","Left swipe");
+
+                ShowChosen.id = showNewRandomMeal();
+                Log.d("Swipes","Left swipe " + ShowChosen.id);
                 return true;
             }
 
             @Override
             public boolean onSwipeRight() {
+                intent.putExtra("MEALID",ShowChosen.id);
                 startActivity(intent);
                 Log.d("Swipes","Right swipe");
                 return true;
@@ -60,7 +64,7 @@ public class ShowChosen extends Activity{
     }
 
 
-    public void showNewRandomMeal () {
+    public int showNewRandomMeal () {
         ImageView mealView = (ImageView) findViewById(R.id.meal_image);
         TextView textView = (TextView) findViewById(R.id.name_view);
 
@@ -68,6 +72,7 @@ public class ShowChosen extends Activity{
         if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
         textView.setTextSize(40);
         textView.setText(meal.getName());
+        return meal.getId();
     }
 
     public Meal chooseRandom() {
