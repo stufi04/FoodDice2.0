@@ -29,16 +29,16 @@ public class ShowRecipe extends Activity {
         ImageView mealView = (ImageView) findViewById(R.id.mealIcon);
         TextView mealName = (TextView) findViewById(R.id.mealName);
         TextView mealRecipe = (TextView) findViewById(R.id.mealRecipe);
-        TextView mealIngr = (TextView) findViewById(R.id.mealIngr);
+        //TextView mealIngr = (TextView) findViewById(R.id.mealIngr);
 
         Meal meal = chooseByID(id);
         if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
         mealName.setText(meal.getName());
         mealRecipe.setText(meal.getRecipe());
-        mealIngr.setText("Ingridients to come here");
+       // mealIngr.setText("Ingridients to come here");
         //TODO add meal.getIngr when implemented
         mealRecipe.setMovementMethod(new ScrollingMovementMethod());
-        mealIngr.setMovementMethod(new ScrollingMovementMethod());
+       // mealIngr.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public Meal chooseByID(int id) {

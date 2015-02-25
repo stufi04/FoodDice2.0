@@ -19,6 +19,7 @@
         android:layout_height="80dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
+        android:textSize="22.5dp"
         android:id="@+id/mealName"
         android:layout_alignBottom="@+id/mealIcon"
         android:layout_toRightOf="@+id/mealIcon"
@@ -28,9 +29,9 @@
         android:gravity="center"
         android:shadowColor="#FFF"
         android:shadowRadius="10.0"
-        android:textColor="#407F7F" />
+        android:textColor="#0D4D4D" />
 
-    <TextView
+    <!--<TextView
         android:layout_width="fill_parent"
         android:layout_height="100dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -43,16 +44,17 @@
         android:gravity="center"
         android:shadowColor="#FFF"
         android:shadowRadius="10.0"
-        android:textColor="#407F7F" />
+        android:textColor="#407F7F"
+    />-->
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ingredients comes here"
         android:id="@+id/mealRecipe"
         android:layout_toEndOf="@+id/mealIcon"
-        android:layout_below="@+id/mealIngr"
+        android:layout_below="@+id/mealName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:gravity="center"
@@ -62,5 +64,7 @@
         android:textSize="20dp"
         android:scrollbars="vertical"
         android:nestedScrollingEnabled="true"
-        />
+        android:background= "#44FFFFFF"
+        android:layout_marginTop="15dp"/>
+
 </RelativeLayout>
