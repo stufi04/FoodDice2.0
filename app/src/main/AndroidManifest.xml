@@ -50,6 +50,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="stechb.myfirstapp.MainActivity" />
         </activity>
+        <activity
+            android:name=".ShowRecipe"
+            android:label="@string/title_activity_show_recipe"
+            android:parentActivityName=".ShowChosen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="stechb.myfirstapp.ShowChosen" />
+        </activity>
     </application>
 
 </manifest>
