@@ -8,6 +8,7 @@ import android.view.View;
 /**
  * Created by DELL on 24.2.2015 г..
  */
+
 public class OnSwipeTouchListener implements View.OnTouchListener {
 
     private final GestureDetector gestureDetector;
@@ -16,10 +17,12 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
         gestureDetector = new GestureDetector(context, new GestureListener());
     }
 
-    public void onSwipeLeft() {
+    public boolean onSwipeLeft() {
+        return false;
     }
 
-    public void onSwipeRight() {
+    public boolean onSwipeRight() {
+        return false;
     }
 
     public boolean onTouch(View v, MotionEvent event) {

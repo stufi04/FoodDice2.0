@@ -23,12 +23,12 @@ import android.view.View;
 import java.io.IOException;
 
 
-public class ShowChosen extends Activity{
-ViewGroup thisLayout;
+public class ShowChosen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.chosen_show);
 
         showNewRandomMeal();
         swipeMethod();
@@ -36,29 +36,36 @@ ViewGroup thisLayout;
     }
 
     public void swipeMethod () {
-        final Intent intent = new Intent(this, ShowRecipe.class);
-        final Intent intentSame = new Intent(this, ShowChosen.class);
 
-        thisLayout = (ViewGroup) findViewById(R.id.thisLayout);
+        final Intent intent = new Intent(this, ShowRecipe.class);
+        // final Intent intentSame = new Intent(this, ShowChosen.class);
+
+        View thisLayout = (View) findViewById(R.id.thisLayout);
         thisLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
-            public void onSwipeLeft() {
-                startActivity(intentSame);
-                //showNewRandomMeal();
+            public boolean onSwipeLeft() {
+                //startActivity(intentSame);
+                showNewRandomMeal();
+                Log.d("Swipes","Left swipe");
+                return true;
             }
 
             @Override
-            public void onSwipeRight() {
+            public boolean onSwipeRight() {
                 startActivity(intent);
+                Log.d("Swipes","Right swipe");
+                return true;
             }
         });
     }
+
+
     public void showNewRandomMeal () {
-        Meal meal = chooseRandom();
-        setContentView(R.layout.chosen_show);
         ImageView mealView = (ImageView) findViewById(R.id.meal_image);
+        TextView textView = (TextView) findViewById(R.id.name_view);
+
+        Meal meal = chooseRandom();
         if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
-        final TextView textView = (TextView) findViewById(R.id.name_view);
         textView.setTextSize(40);
         textView.setText(meal.getName());
     }
@@ -78,11 +85,6 @@ ViewGroup thisLayout;
         return meal;
 
     }
-
-
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
