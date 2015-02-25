@@ -23,7 +23,7 @@ import android.view.View;
 import java.io.IOException;
 
 
-public class ShowChosen extends Activity {
+public class ShowChosen extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

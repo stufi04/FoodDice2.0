@@ -19,7 +19,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="FoodDice" >
+            android:label="FoodDice"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +30,8 @@
         <activity
             android:name=".ShowChosen"
             android:label="@string/title_activity_show_chosen"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="stechb.myfirstapp.MainActivity" />
@@ -37,7 +39,8 @@
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="stechb.myfirstapp.MainActivity" />
@@ -45,7 +48,8 @@
         <activity
             android:name=".SetRandom"
             android:label="@string/title_activity_set_random"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="stechb.myfirstapp.MainActivity" />
@@ -53,7 +57,8 @@
         <activity
             android:name=".ShowRecipe"
             android:label="@string/title_activity_show_recipe"
-            android:parentActivityName=".ShowChosen" >
+            android:parentActivityName=".ShowChosen"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="stechb.myfirstapp.ShowChosen" />

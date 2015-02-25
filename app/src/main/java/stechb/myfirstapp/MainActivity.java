@@ -18,8 +18,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import android.app.Activity;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends Activity {
 
     public final static String EXTRA_MESSAGE = "stechb.myfirstapp.MESSAGE";
 

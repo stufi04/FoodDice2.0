@@ -6,8 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RadioButton;
 
+import android.app.Activity;
 
-public class SetRandom extends ActionBarActivity {
+
+public class SetRandom extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

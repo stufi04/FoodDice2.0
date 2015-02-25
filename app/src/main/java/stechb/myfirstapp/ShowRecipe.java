@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.app.Activity;
 
-public class ShowRecipe extends ActionBarActivity {
+
+public class ShowRecipe extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
