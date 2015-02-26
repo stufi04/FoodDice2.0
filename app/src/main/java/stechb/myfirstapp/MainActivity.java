@@ -61,6 +61,7 @@ public class MainActivity extends Activity {
 
     public void chooseRandom(View view) throws FileNotFoundException {
         Intent intent = new Intent(this, ShowChosen.class);
+        intent.putExtra("queryType", "1");
         startActivity(intent);
     }
 

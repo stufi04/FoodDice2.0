@@ -25,10 +25,14 @@ import java.io.IOException;
 
 public class ShowChosen extends Activity{
    static int id;
+   private String qType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chosen_show);
+        Intent intent = getIntent();
+        qType = intent.getStringExtra("queryType");
 
         id = showNewRandomMeal();
         swipeMethod();
@@ -85,7 +89,7 @@ public class ShowChosen extends Activity{
             //throw new Error ("unable to create database");
         }
         db.openDataBase();
-        Meal meal = db.getRandomMeal();
+        Meal meal = db.getRandomMeal(qType);
         db.close();
         return meal;
 

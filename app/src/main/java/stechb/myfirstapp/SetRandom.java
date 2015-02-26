@@ -1,9 +1,11 @@
 package stechb.myfirstapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RadioButton;
 
 import android.app.Activity;
@@ -17,6 +19,35 @@ public class SetRandom extends Activity {
         setContentView(R.layout.activity_set_random);
     }
 
+    public void chickenChosen (View view) {
+        Intent toShowChosen = new Intent(this, ShowChosen.class);
+        toShowChosen.putExtra("queryType", "chicken = 1");
+        startActivity(toShowChosen);
+    }
+
+    public void porkChosen (View view) {
+        Intent toShowChosen = new Intent(this, ShowChosen.class);
+        toShowChosen.putExtra("queryType", "pork = 1");
+        startActivity(toShowChosen);
+    }
+
+    public void beefChosen (View view) {
+        Intent toShowChosen = new Intent(this, ShowChosen.class);
+        toShowChosen.putExtra("queryType", "veil = 1");
+        startActivity(toShowChosen);
+    }
+
+    public void fishChosen (View view) {
+        Intent toShowChosen = new Intent(this, ShowChosen.class);
+        toShowChosen.putExtra("queryType", "fish = 1");
+        startActivity(toShowChosen);
+    }
+
+    public void veggieChosen (View view) {
+        Intent toShowChosen = new Intent(this, ShowChosen.class);
+        toShowChosen.putExtra("queryType", "veggie = 1");
+        startActivity(toShowChosen);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -35,7 +35,8 @@
             android:layout_width="147dp"
             android:layout_height="133dp"
             android:background="@drawable/chicken"
-            android:id="@+id/iButton1"/>
+            android:id="@+id/iButton1"
+            android:onClick="chickenChosen" />
 
     </FrameLayout>
 
@@ -56,7 +57,8 @@
             android:layout_width="147dp"
             android:layout_height="133dp"
             android:background="@drawable/pork"
-            android:id="@+id/iButton2"/>
+            android:id="@+id/iButton2"
+            android:onClick="porkChosen"/>
 
     </FrameLayout>
 
@@ -106,7 +108,8 @@
             android:layout_width="147dp"
             android:layout_height="133dp"
             android:background="@drawable/beef"
-            android:id="@+id/iButton3"/>
+            android:id="@+id/iButton3"
+            android:onClick="beefChosen"/>
 
     </FrameLayout>
 
@@ -126,7 +129,8 @@
             android:layout_width="147dp"
             android:layout_height="133dp"
             android:background="@drawable/fish"
-            android:id="@+id/iButton4"/>
+            android:id="@+id/iButton4"
+            android:onClick="fishChosen"/>
 
     </FrameLayout>
 
@@ -176,7 +180,8 @@
             android:layout_width="147dp"
             android:layout_height="133dp"
             android:background="@drawable/veggie"
-            android:id="@+id/iButton5"/>
+            android:id="@+id/iButton5"
+            android:onClick="veggieChosen"/>
 
     </FrameLayout>
 

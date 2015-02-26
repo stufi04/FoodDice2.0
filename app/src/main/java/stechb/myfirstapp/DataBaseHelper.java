@@ -147,7 +147,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         catch (Exception e) {return "Musaka";}
     }
-    public Meal getRandomMeal(){
+    public Meal getRandomMeal(String q) {
         try {
             int id;
             String name = "";
@@ -159,7 +159,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
 
-            String query = "SELECT * FROM recipes WHERE 1";
+            String query = "SELECT * FROM recipes WHERE ";
+            query += q;
 
 
             Cursor c = db.rawQuery(query, null);
