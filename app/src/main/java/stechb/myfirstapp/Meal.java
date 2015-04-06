@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Meal {
     private String name;
+    private String ingredients;
     private String recipe;
     private boolean veggie;
     private boolean chicken;
@@ -20,10 +21,11 @@ public class Meal {
     private int id;
     public static ArrayList<String> lastFive = new ArrayList<>();
 
-    public Meal(int id,String name,String recipe,Bitmap image){
+    public Meal(int id,String name,String recipe,String ingredients,Bitmap image){
         this.id = id;
         this.name = name;
         this.recipe = recipe;
+        this.ingredients = ingredients;
         this.image = image;
 
     }
@@ -33,6 +35,7 @@ public class Meal {
     public String getRecipe(){
         return this.recipe;
     }
+    public String getIngredients() {return this.ingredients; }
     public boolean isVeggie() { return this.veggie; }
     public boolean isChicken() { return this.chicken; }
     public boolean isPork() { return this.pork; }

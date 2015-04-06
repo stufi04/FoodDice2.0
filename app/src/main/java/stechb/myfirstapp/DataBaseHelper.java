@@ -152,6 +152,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             int id;
             String name = "";
             String recipe = "";
+            String ingredients = "";
             Bitmap image = null;
             byte[] byteArray = null;
 
@@ -179,6 +180,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 id = c.getInt(0);
 
             recipe = String.valueOf(c.getString(2));
+            ingredients = String.valueOf(c.getString(9));
 
             byteArray = c.getBlob(3);
             c.close();
@@ -187,12 +189,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             try{
             Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            Meal meal = new Meal(id,name,recipe,bmp);
+            Meal meal = new Meal(id,name,recipe,ingredients,bmp);
                 Log.d("MYMSG","FROM TRY"+bmp.getByteCount());
             return meal;}
             catch (Exception e){
                 e.printStackTrace();
-                Meal meal = new Meal(id,name,recipe,null);
+                Meal meal = new Meal(id,name,recipe,ingredients,null);
                 Log.d("MYMSG","FROM FROMCATCH");
                 return meal;
             }
@@ -205,6 +207,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         int id;
         String name = "";
         String recipe = "";
+        String ingredients = "";
         Bitmap image = null;
         byte[] byteArray = null;
 
@@ -226,6 +229,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         id = c.getInt(0);
 
         recipe = String.valueOf(c.getString(2));
+        ingredients = String.valueOf(c.getString(9));
 
         byteArray = c.getBlob(3);
         c.close();
@@ -234,12 +238,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         try{
             Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            Meal meal = new Meal(id,name,recipe,bmp);
+            Meal meal = new Meal(id,name,recipe,ingredients,bmp);
             Log.d("MYMSG","FROM TRY"+bmp.getByteCount());
             return meal;}
         catch (Exception e){
             e.printStackTrace();
-            Meal meal = new Meal(id,name,recipe,null);
+            Meal meal = new Meal(id,name,recipe,ingredients,null);
             Log.d("MYMSG","FROM FROMCATCH");
             return meal;
         }

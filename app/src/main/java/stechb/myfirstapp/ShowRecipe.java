@@ -4,17 +4,23 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import android.app.Activity;
+import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import java.io.IOException;
 
 
 public class ShowRecipe extends Activity {
+
+    private boolean slided = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +29,23 @@ public class ShowRecipe extends Activity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("MEALID",0);
         showNewMealById(id);
-
+        swipeMethod();
     }
+
     public void showNewMealById (int id) {
         ImageView mealView = (ImageView) findViewById(R.id.mealIcon);
         TextView mealName = (TextView) findViewById(R.id.mealName);
         TextView mealRecipe = (TextView) findViewById(R.id.mealRecipe);
-        //TextView mealIngr = (TextView) findViewById(R.id.mealIngr);
+        TextView mealIngr = (TextView) findViewById(R.id.mealIngredients);
 
         Meal meal = chooseByID(id);
         if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
         mealName.setText(meal.getName());
-        mealRecipe.setText(meal.getRecipe());
-        // getting rid of ingredients for now (had to write a stupid to comment so that the file changes so that i can commit...)
-        // mealIngr.setText("Ingridients to come here");
+        mealRecipe.setText("Recipe:\n\n" + meal.getRecipe());
+        mealIngr.setText("Ingredients:\n\n" + meal.getIngredients());
         //TODO add meal.getIngr when implemented
         mealRecipe.setMovementMethod(new ScrollingMovementMethod());
-       // mealIngr.setMovementMethod(new ScrollingMovementMethod());
+        mealIngr.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public Meal chooseByID(int id) {
@@ -79,5 +85,31 @@ public class ShowRecipe extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void swipeMethod () {
+
+        final View thisLayout = (View) findViewById(R.id.thisLayout);
+        thisLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public boolean onSwipeRight() {
+                if (slided==true) return false;
+                ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
+                vf.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.slide_in_left));
+                vf.showNext();
+                slided=true;
+                return true;
+            }
+
+            @Override
+            public boolean onSwipeLeft() {
+                if (slided==false) return true;
+                ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
+                vf.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.slide_in_right));
+                vf.showPrevious();
+                slided=false;
+                return true;
+            }
+        });
     }
 }
