@@ -43,7 +43,6 @@ public class ShowRecipe extends Activity {
         mealName.setText(meal.getName());
         mealRecipe.setText("Recipe:\n\n" + meal.getRecipe());
         mealIngr.setText("Ingredients:\n\n" + meal.getIngredients());
-        //TODO add meal.getIngr when implemented
         mealRecipe.setMovementMethod(new ScrollingMovementMethod());
         mealIngr.setMovementMethod(new ScrollingMovementMethod());
     }
@@ -106,6 +105,30 @@ public class ShowRecipe extends Activity {
                 if (slided==false) return true;
                 ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
                 vf.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.slide_in_right));
+                vf.showPrevious();
+                slided=false;
+                return true;
+            }
+        });
+
+        final View v1 = (View) findViewById(R.id.mealRecipe);
+        v1.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public boolean onSwipeRight() {
+                ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
+                vf.setAnimation(AnimationUtils.loadAnimation(v1.getContext(), R.anim.slide_in_left));
+                vf.showNext();
+                slided=true;
+                return true;
+            }
+        });
+
+        final View v2 = (View) findViewById(R.id.mealIngredients);
+        v2.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public boolean onSwipeLeft() {
+                ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
+                vf.setAnimation(AnimationUtils.loadAnimation(v2.getContext(), R.anim.slide_in_right));
                 vf.showPrevious();
                 slided=false;
                 return true;

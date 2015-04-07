@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.MotionEvent;
@@ -46,13 +47,14 @@ public class ShowChosen extends Activity{
         intent.putExtra("MEALID",ShowChosen.id);
         // final Intent intentSame = new Intent(this, ShowChosen.class);
 
-        View thisLayout = (View) findViewById(R.id.thisLayout);
+        final View thisLayout = (View) findViewById(R.id.thisLayout);
         thisLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
             public boolean onSwipeLeft() {
                 //startActivity(intentSame);
 
                 ShowChosen.id = showNewRandomMeal();
+                //thisLayout.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.grow_fade_in));
                 Log.d("Swipes","Left swipe " + ShowChosen.id);
                 return true;
             }
@@ -69,6 +71,7 @@ public class ShowChosen extends Activity{
 
 
     public int showNewRandomMeal () {
+
         ImageView mealView = (ImageView) findViewById(R.id.meal_image);
         TextView textView = (TextView) findViewById(R.id.name_view);
 

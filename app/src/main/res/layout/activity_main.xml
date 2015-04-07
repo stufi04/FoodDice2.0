@@ -1,11 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/backgroundMainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_vertical"
-    android:background="@drawable/cooking">
+    android:background="@drawable/cooking"
+    android:orientation="vertical">
 
     <!--<ImageView
         android:layout_width="fill_parent"
@@ -16,38 +15,34 @@
         android:id="@+id/btnRandom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Random meal"
-        android:textColor="#0D4D4D"
-        android:layout_gravity="center"
-        android:onClick="chooseRandom" />
+        android:layout_alignLeft="@+id/btnAdvanced"
+        android:layout_alignRight="@+id/btnAdvanced"
+        android:gravity="center"
+        android:onClick="chooseRandom"
+        android:text="Random"
+        android:textColor="#0D4D4D" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal" >
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Advanced"
-                android:textColor="#0D4D4D"
-                android:onClick="setRandom"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textColor="#0D4D4D"
-                android:onClick="openSettings"/>
-
-    </LinearLayout>
-
-    <TextView
+    <Button
+        android:id="@+id/btnAdvanced"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/show_meal"
-        android:text="" />
+        android:layout_below="@+id/btnRandom"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:onClick="setRandom"
+        android:text="Advanced"
+        android:textColor="#0D4D4D" />
 
-</LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnAdvanced"
+        android:layout_alignRight="@+id/btnAdvanced"
+        android:layout_below="@+id/btnAdvanced"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:onClick="openSettings"
+        android:text="Cuisine"
+        android:textColor="#0D4D4D" />
+
+</RelativeLayout>
