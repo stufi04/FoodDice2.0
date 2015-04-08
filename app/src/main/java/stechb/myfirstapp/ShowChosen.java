@@ -26,23 +26,27 @@ import java.io.IOException;
 
 
 public class ShowChosen extends Activity{
+
    static int id;
    private String qType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("Query", "Clicked chicken 4");
         setContentView(R.layout.chosen_show);
+        Log.d("Query", "Clicked chicken 5");
         Intent intent = getIntent();
+        Log.d("Query", "Clicked chicken 6");
         qType = intent.getStringExtra("queryType");
-
+        Log.d("Query",qType);
         id = showNewRandomMeal();
         swipeMethod();
 
-        arrowClicks();
+        //arrowClicks();
     }
 
-    public void arrowClicks () {
+    /*public void arrowClicks () {
         ImageView a1 = (ImageView) findViewById(R.id.leftArrow);
         ImageView a2 = (ImageView) findViewById(R.id.rightArrow);
         a1.setOnClickListener(new OnClickListener() {
@@ -57,7 +61,8 @@ public class ShowChosen extends Activity{
                 goToRecipe();
             }
         });
-    }
+    }*/
+
     public void swipeMethod () {
 
         final View thisLayout = (View) findViewById(R.id.thisLayout);
@@ -79,7 +84,7 @@ public class ShowChosen extends Activity{
     }
 
     public void goToRecipe () {
-        final Intent intent = new Intent(this, ShowRecipe.class);
+        Intent intent = new Intent(this, ShowRecipe.class);
         intent.putExtra("MEALID",ShowChosen.id);
         startActivity(intent);
     }

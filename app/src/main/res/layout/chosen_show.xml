@@ -1,72 +1,73 @@
 <RelativeLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/thisLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cooking"
+    android:gravity="center"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="stechb.myfirstapp.ShowChosen.java"
-    android:gravity="center"
-    android:background="@drawable/cooking"
-    android:id="@+id/thisLayout"
-   >
+    tools:context="stechb.myfirstapp.ShowChosen.java">
 
     <ImageView
+        android:id="@+id/leftArrow"
         android:layout_width="10dp"
         android:layout_height="20dp"
-        android:layout_marginTop="200dp"
-        android:layout_alignTop="@+id/name_view"
-        android:background="@drawable/left_arrow2"
         android:layout_alignParentLeft="true"
-        android:id="@+id/leftArrow"/>
+        android:layout_alignTop="@+id/name_view"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/left_arrow2" />
 
     <ImageView
+        android:id="@+id/rightArrow"
         android:layout_width="10dp"
         android:layout_height="20dp"
-        android:layout_marginTop="200dp"
-        android:layout_alignTop="@+id/name_view"
-        android:layout_centerVertical="true"
-        android:background="@drawable/right_arrow2"
         android:layout_alignParentRight="true"
-        android:id="@+id/rightArrow"/>
+        android:layout_alignTop="@+id/name_view"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/right_arrow2" />
 
     <ImageView
-        android:layout_height="278dp"
+        android:id="@+id/meal_image"
         android:layout_width="300dp"
-        android:id = "@+id/meal_image"
-        android:contentDescription="The meal image"
-        android:background="#407F7F"
+        android:layout_height="278dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
 
-        android:padding="9dp"
-        android:adjustViewBounds="true"
         android:layout_marginBottom="52dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@id/rightArrow"
         android:layout_toRightOf="@id/leftArrow"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+
+        android:adjustViewBounds="true"
+        android:background="#407F7F"
+        android:contentDescription="The meal image"
+        android:padding="9dp" />
+
 
     <TextView
+        android:id="@+id/name_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/name_view"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textColor="#0D4D4D"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-
-        android:minHeight="150dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toLeftOf="@id/rightArrow"
         android:layout_toRightOf="@id/leftArrow"
-        />
+        android:gravity="center"
+        android:minHeight="150dp"
+
+        android:shadowColor="#FFF"
+        android:shadowRadius="10.0"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#0D4D4D" />
 
 
 </RelativeLayout>
