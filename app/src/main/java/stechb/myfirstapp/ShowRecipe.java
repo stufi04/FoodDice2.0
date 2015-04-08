@@ -1,6 +1,9 @@
 package stechb.myfirstapp;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -86,6 +89,15 @@ public class ShowRecipe extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    public void swapDots() {
+        ImageView dot1 = (ImageView) findViewById(R.id.dot1);
+        ImageView dot2 = (ImageView) findViewById(R.id.dot2);
+        Drawable d = dot1.getBackground();
+        dot1.setBackground(dot2.getBackground());
+        dot2.setBackground(d);
+    }
+
     public void swipeMethod () {
 
         final View thisLayout = (View) findViewById(R.id.thisLayout);
@@ -97,6 +109,7 @@ public class ShowRecipe extends Activity {
                 vf.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.slide_in_left));
                 vf.showNext();
                 slided=true;
+                swapDots();
                 return true;
             }
 
@@ -107,6 +120,7 @@ public class ShowRecipe extends Activity {
                 vf.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.slide_in_right));
                 vf.showPrevious();
                 slided=false;
+                swapDots();
                 return true;
             }
         });
@@ -119,6 +133,7 @@ public class ShowRecipe extends Activity {
                 vf.setAnimation(AnimationUtils.loadAnimation(v1.getContext(), R.anim.slide_in_left));
                 vf.showNext();
                 slided=true;
+                swapDots();
                 return true;
             }
         });
@@ -131,6 +146,7 @@ public class ShowRecipe extends Activity {
                 vf.setAnimation(AnimationUtils.loadAnimation(v2.getContext(), R.anim.slide_in_right));
                 vf.showPrevious();
                 slided=false;
+                swapDots();
                 return true;
             }
         });

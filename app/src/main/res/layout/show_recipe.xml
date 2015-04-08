@@ -1,14 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/thisLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cooking"
-    android:gravity="center"
+
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:id="@+id/thisLayout"
     tools:context="stechb.myfirstapp.ShowRecipe">
 
     <ImageView
@@ -35,47 +35,71 @@
         android:textColor="#0D4D4D"
         android:textSize="22.5dp" />
 
+    <LinearLayout
+        android:id="@+id/dotSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/light_dot"
+            android:id="@+id/dot1" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/dark_dot"
+            android:id="@+id/dot2" />
+
+    </LinearLayout>
+
     <ViewFlipper
         android:id="@+id/flipper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/dotSpace"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/mealName"
         android:layout_marginTop="15dp"
-        android:layout_toEndOf="@+id/mealIcon"
-        >
+        android:layout_marginBottom="15dp"
+        android:layout_toEndOf="@+id/mealIcon">
 
-            <TextView
-                android:id="@+id/mealIngredients"
-                android:layout_height="fill_parent"
-                android:layout_width="fill_parent"
-                android:background="#44FFFFFF"
-                android:gravity="center"
-                android:nestedScrollingEnabled="true"
-                android:scrollbars="vertical"
-                android:shadowColor="#FFF"
-                android:shadowRadius="10.0"
-                android:text="Ingredients comes here"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#0D4D4D"
-                android:textSize="20dp" />
+        <TextView
+            android:id="@+id/mealIngredients"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#44FFFFFF"
+            android:gravity="center"
+            android:nestedScrollingEnabled="true"
+            android:scrollbars="vertical"
+            android:shadowColor="#FFF"
+            android:shadowRadius="10.0"
+            android:text="Ingredients comes here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#0D4D4D"
+            android:textSize="20dp" />
 
 
-            <TextView
-                android:id="@+id/mealRecipe"
-                android:layout_height="fill_parent"
-                android:layout_width="fill_parent"
-                android:background="#44FFFFFF"
-                android:gravity="center"
-                android:nestedScrollingEnabled="true"
-                android:scrollbars="vertical"
-                android:shadowColor="#FFF"
-                android:shadowRadius="10.0"
-                android:text="Ingredients comes here"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#0D4D4D"
-                android:textSize="20dp" />
+        <TextView
+            android:id="@+id/mealRecipe"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#44FFFFFF"
+            android:gravity="center"
+            android:nestedScrollingEnabled="true"
+            android:scrollbars="vertical"
+            android:shadowColor="#FFF"
+            android:shadowRadius="10.0"
+            android:text="Ingredients comes here"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#0D4D4D"
+            android:textSize="20dp" />
 
     </ViewFlipper>
 
