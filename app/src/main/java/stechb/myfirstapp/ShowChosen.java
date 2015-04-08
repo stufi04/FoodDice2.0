@@ -2,6 +2,7 @@ package stechb.myfirstapp;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,7 +21,7 @@ import android.view.MotionEvent;
 import android.view.GestureDetector;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-
+import android.view.View.OnClickListener;
 import java.io.IOException;
 
 
@@ -38,37 +39,50 @@ public class ShowChosen extends Activity{
         id = showNewRandomMeal();
         swipeMethod();
 
+        arrowClicks();
     }
 
+    public void arrowClicks () {
+        ImageView a1 = (ImageView) findViewById(R.id.leftArrow);
+        ImageView a2 = (ImageView) findViewById(R.id.rightArrow);
+        a1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowChosen.id = showNewRandomMeal();
+            }
+        });
+        a2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToRecipe();
+            }
+        });
+    }
     public void swipeMethod () {
-
-
-        final Intent intent = new Intent(this, ShowRecipe.class);
-        intent.putExtra("MEALID",ShowChosen.id);
-        // final Intent intentSame = new Intent(this, ShowChosen.class);
 
         final View thisLayout = (View) findViewById(R.id.thisLayout);
         thisLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
             public boolean onSwipeLeft() {
-                //startActivity(intentSame);
-
                 ShowChosen.id = showNewRandomMeal();
-                //thisLayout.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.grow_fade_in));
                 Log.d("Swipes","Left swipe " + ShowChosen.id);
                 return true;
             }
 
             @Override
             public boolean onSwipeRight() {
-                intent.putExtra("MEALID",ShowChosen.id);
-                startActivity(intent);
+                goToRecipe();
                 Log.d("Swipes","Right swipe");
                 return true;
             }
         });
     }
 
+    public void goToRecipe () {
+        final Intent intent = new Intent(this, ShowRecipe.class);
+        intent.putExtra("MEALID",ShowChosen.id);
+        startActivity(intent);
+    }
 
     public int showNewRandomMeal () {
 
