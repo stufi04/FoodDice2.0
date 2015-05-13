@@ -13,6 +13,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="stechb.myfirstapp.ShowChosen.java">
 
+    <!--
     <ImageView
         android:id="@+id/leftArrow"
         android:layout_width="10dp"
@@ -30,6 +31,7 @@
         android:layout_alignTop="@+id/name_view"
         android:layout_marginTop="200dp"
         android:background="@drawable/right_arrow2" />
+    -->
 
     <ImageView
         android:id="@+id/meal_image"
@@ -37,17 +39,16 @@
         android:layout_height="278dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-
         android:layout_marginBottom="52dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@id/rightArrow"
-        android:layout_toRightOf="@id/leftArrow"
-
         android:adjustViewBounds="true"
         android:background="#407F7F"
         android:contentDescription="The meal image"
-        android:padding="9dp" />
+        android:padding="9dp"
+        />
+        <!--android:layout_toLeftOf="@id/rightArrow"
+        android:layout_toRightOf="@id/leftArrow"-->
 
 
     <TextView
@@ -58,16 +59,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@id/rightArrow"
-        android:layout_toRightOf="@id/leftArrow"
         android:gravity="center"
         android:minHeight="150dp"
-
         android:shadowColor="#FFF"
         android:shadowRadius="10.0"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#0D4D4D" />
+        <!--android:layout_toLeftOf="@id/rightArrow"
+        android:layout_toRightOf="@id/leftArrow"-->
 
 
 </RelativeLayout>

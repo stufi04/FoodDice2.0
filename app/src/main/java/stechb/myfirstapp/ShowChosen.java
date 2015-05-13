@@ -33,15 +33,24 @@ public class ShowChosen extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("Query", "Clicked chicken 4");
+        //Log.d("Query", "Clicked chicken 4");
         setContentView(R.layout.chosen_show);
-        Log.d("Query", "Clicked chicken 5");
+        //Log.d("Query", "Clicked chicken 5");
         Intent intent = getIntent();
-        Log.d("Query", "Clicked chicken 6");
+        //Log.d("Query", "Clicked chicken 6");
         qType = intent.getStringExtra("queryType");
-        Log.d("Query",qType);
+        //Log.d("Query",qType);
         id = showNewRandomMeal();
         swipeMethod();
+
+        View image = (View) findViewById(R.id.meal_image);
+        image.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToRecipe();
+            }
+        });
+
 
         //arrowClicks();
     }
@@ -76,7 +85,8 @@ public class ShowChosen extends Activity{
 
             @Override
             public boolean onSwipeRight() {
-                goToRecipe();
+                ShowChosen.id = showNewRandomMeal();
+                //goToRecipe();
                 Log.d("Swipes","Right swipe");
                 return true;
             }
