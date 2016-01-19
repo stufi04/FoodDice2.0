@@ -52,30 +52,15 @@ public class ShowChosen extends Activity{
         });
 
 
+
+
         //arrowClicks();
     }
 
-    /*public void arrowClicks () {
-        ImageView a1 = (ImageView) findViewById(R.id.leftArrow);
-        ImageView a2 = (ImageView) findViewById(R.id.rightArrow);
-        a1.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowChosen.id = showNewRandomMeal();
-            }
-        });
-        a2.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToRecipe();
-            }
-        });
-    }*/
+
 
     public void swipeMethod () {
-
-        final View thisLayout = (View) findViewById(R.id.thisLayout);
-        thisLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
+        OnSwipeTouchListener swipeListener = new OnSwipeTouchListener(this) {
             @Override
             public boolean onSwipeLeft() {
                 ShowChosen.id = showNewRandomMeal();
@@ -90,7 +75,25 @@ public class ShowChosen extends Activity{
                 Log.d("Swipes","Right swipe");
                 return true;
             }
-        });
+
+            @Override
+            public boolean onTap(){
+                goToRecipe();
+                Log.d("Swipes", "Tap");
+                return true;
+            }
+
+        };
+        final View thisLayout = (View) findViewById(R.id.thisLayout);
+        thisLayout.setOnTouchListener(swipeListener);
+        View image = (View) findViewById(R.id.meal_image);
+        image.setOnTouchListener(swipeListener);
+        /*image.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToRecipe();
+            }
+        });*/
     }
 
     public void goToRecipe () {

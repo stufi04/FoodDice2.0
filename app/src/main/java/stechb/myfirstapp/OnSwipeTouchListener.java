@@ -1,6 +1,7 @@
 package stechb.myfirstapp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,6 +26,8 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
         return false;
     }
 
+    public boolean onTap() {return false;}
+
     public boolean onTouch(View v, MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
     }
@@ -33,7 +36,12 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
 
         private static final int SWIPE_DISTANCE_THRESHOLD = 100;
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
-
+        @Override
+        public boolean onSingleTapConfirmed (MotionEvent e){
+            onTap();
+            Log.d("Swipes", "Tap Atempt");
+            return true;
+        }
         @Override
         public boolean onDown(MotionEvent e) {
             return true;
@@ -50,7 +58,11 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
                     onSwipeLeft();
                 return true;
             }
-            return false;
+
+
+            return  false;
+
+
         }
     }
 }
