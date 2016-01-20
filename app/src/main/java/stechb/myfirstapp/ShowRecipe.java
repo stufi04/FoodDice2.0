@@ -33,12 +33,12 @@ public class ShowRecipe extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_recipe);
         Intent intent = getIntent();
-        int id = intent.getIntExtra("MEALID",0);
+        int id = intent.getIntExtra("MEALID", 0);
         showNewMealById(id);
         swipeMethod();
     }
 
-    public void showNewMealById (int id) {
+    public void showNewMealById(int id) {
         ImageView mealView = (ImageView) findViewById(R.id.mealIcon);
         TextView mealName = (TextView) findViewById(R.id.mealName);
         TextView mealRecipe = (TextView) findViewById(R.id.mealRecipe);
@@ -101,7 +101,7 @@ public class ShowRecipe extends Activity {
         dot2.setBackground(d);
     }
 
-    public void swipeMethod () {
+    public void swipeMethod() {
 
         final View thisLayout = (View) findViewById(R.id.thisLayout);
         thisLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -131,29 +131,26 @@ public class ShowRecipe extends Activity {
         final TextView v1 = (TextView) findViewById(R.id.mealRecipe);
         v1.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
-            public boolean Scroll (MotionEvent e1, MotionEvent e2, float distanceX, float distanceY){
-                Log.d("Swipes","Scroll");
-                if (!(v1.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
-                {
-                    Log.d("Flipper","Not working");
-                    return false;
-                }
-                ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) v1.getLayoutParams();
+            public boolean Scroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                Log.d("Swipes", "Scroll");
 
-                int max = (int) (v1.getLineCount()*v1.getLineHeight() * v1.getLineSpacingMultiplier()) - v1.getHeight() + 15;
-                //if(Math.abs(distanceY)>10)marginLayoutParams.topMargin = (int) ( marginLayoutParams.topMargin - 1.5*distanceY);
-                if (v1.getScrollY() + distanceY > 0 && v1.getScrollY() + distanceY < max)v1.scrollBy(0,(int)distanceY);
-                //v1.requestLayout();
+
+                int max = (int) (v1.getLineCount() * v1.getLineHeight() * v1.getLineSpacingMultiplier()) - v1.getHeight() + 15;
+
+                if (v1.getScrollY() + distanceY > 0 && v1.getScrollY() + distanceY < max)
+                    v1.scrollBy(0, (int) distanceY);
+
                 Log.d("Flipper", "Working");
 
                 return true;
             }
+
             @Override
             public boolean onSwipeRight() {
                 ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
                 vf.setAnimation(AnimationUtils.loadAnimation(v1.getContext(), R.anim.slide_in_left));
                 vf.showNext();
-                slided=true;
+                slided = true;
                 swapDots();
                 return true;
             }
@@ -166,19 +163,14 @@ public class ShowRecipe extends Activity {
             @Override
             public boolean Scroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
                 Log.d("Swipes", "Scroll");
-                if (!(v2.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) {
-                    Log.d("Flipper", "Not working");
-                    return false;
-                }
-                ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) v2.getLayoutParams();
 
 
-                //if (Math.abs(distanceY)>20) marginLayoutParams.topMargin = (int) ( marginLayoutParams.topMargin - 1.1*distanceY);
-                    int max = (int) (v2.getLineCount() * v2.getLineHeight() * v2.getLineSpacingMultiplier())- v2.getHeight() + 15;
+                int max = (int) (v2.getLineCount() * v2.getLineHeight() * v2.getLineSpacingMultiplier()) - v2.getHeight() + 15;
 
-                    if (v2.getScrollY() + distanceY > 0 && v2.getScrollY() + distanceY < max)v2.scrollBy(0, (int) distanceY);
+                if (v2.getScrollY() + distanceY > 0 && v2.getScrollY() + distanceY < max)
+                    v2.scrollBy(0, (int) distanceY);
 
-                //v2.requestLayout();
+
                 Log.d("Flipper", "Working" + v2.getScrollY());
 
                 return true;
