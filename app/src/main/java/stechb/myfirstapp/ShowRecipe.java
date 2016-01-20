@@ -2,6 +2,7 @@ package stechb.myfirstapp;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
@@ -12,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import android.app.Activity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -104,29 +107,47 @@ public class ShowRecipe extends Activity {
         thisLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
             public boolean onSwipeRight() {
-                if (slided==true) return false;
+                if (slided == true) return false;
                 ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
                 vf.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.slide_in_left));
                 vf.showNext();
-                slided=true;
+                slided = true;
                 swapDots();
                 return true;
             }
 
             @Override
             public boolean onSwipeLeft() {
-                if (slided==false) return true;
+                if (slided == false) return true;
                 ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
                 vf.setAnimation(AnimationUtils.loadAnimation(thisLayout.getContext(), R.anim.slide_in_right));
                 vf.showPrevious();
-                slided=false;
+                slided = false;
                 swapDots();
                 return true;
             }
         });
 
-        final View v1 = (View) findViewById(R.id.mealRecipe);
+        final TextView v1 = (TextView) findViewById(R.id.mealRecipe);
         v1.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public boolean Scroll (MotionEvent e1, MotionEvent e2, float distanceX, float distanceY){
+                Log.d("Swipes","Scroll");
+                if (!(v1.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
+                {
+                    Log.d("Flipper","Not working");
+                    return false;
+                }
+                ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) v1.getLayoutParams();
+
+                int max = (int) (v1.getLineCount()*v1.getLineHeight() * v1.getLineSpacingMultiplier()) - v1.getHeight() + 15;
+                //if(Math.abs(distanceY)>10)marginLayoutParams.topMargin = (int) ( marginLayoutParams.topMargin - 1.5*distanceY);
+                if (v1.getScrollY() + distanceY > 0 && v1.getScrollY() + distanceY < max)v1.scrollBy(0,(int)distanceY);
+                //v1.requestLayout();
+                Log.d("Flipper", "Working");
+
+                return true;
+            }
             @Override
             public boolean onSwipeRight() {
                 ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
@@ -138,14 +159,37 @@ public class ShowRecipe extends Activity {
             }
         });
 
-        final View v2 = (View) findViewById(R.id.mealIngredients);
+        final TextView v2 = (TextView) findViewById(R.id.mealIngredients);
+
         v2.setOnTouchListener(new OnSwipeTouchListener(this) {
+
+            @Override
+            public boolean Scroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                Log.d("Swipes", "Scroll");
+                if (!(v2.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) {
+                    Log.d("Flipper", "Not working");
+                    return false;
+                }
+                ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) v2.getLayoutParams();
+
+
+                //if (Math.abs(distanceY)>20) marginLayoutParams.topMargin = (int) ( marginLayoutParams.topMargin - 1.1*distanceY);
+                    int max = (int) (v2.getLineCount() * v2.getLineHeight() * v2.getLineSpacingMultiplier())- v2.getHeight() + 15;
+
+                    if (v2.getScrollY() + distanceY > 0 && v2.getScrollY() + distanceY < max)v2.scrollBy(0, (int) distanceY);
+
+                //v2.requestLayout();
+                Log.d("Flipper", "Working" + v2.getScrollY());
+
+                return true;
+            }
+
             @Override
             public boolean onSwipeLeft() {
                 ViewFlipper vf = (ViewFlipper) findViewById(R.id.flipper);
                 vf.setAnimation(AnimationUtils.loadAnimation(v2.getContext(), R.anim.slide_in_right));
                 vf.showPrevious();
-                slided=false;
+                slided = false;
                 swapDots();
                 return true;
             }

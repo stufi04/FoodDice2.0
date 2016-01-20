@@ -28,6 +28,8 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
 
     public boolean onTap() {return false;}
 
+    public boolean Scroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {return false;}
+
     public boolean onTouch(View v, MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
     }
@@ -36,6 +38,12 @@ public class OnSwipeTouchListener implements View.OnTouchListener {
 
         private static final int SWIPE_DISTANCE_THRESHOLD = 100;
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+        @Override
+        public boolean onScroll (MotionEvent e1, MotionEvent e2, float distanceX, float distanceY){
+            Scroll(e1, e2, distanceX, distanceY);
+            //Log.d("Swipes", "Scroll");
+            return true;
+        }
         @Override
         public boolean onSingleTapConfirmed (MotionEvent e){
             onTap();
