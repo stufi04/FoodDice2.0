@@ -13,61 +13,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="stechb.myfirstapp.ShowChosen.java">
 
-    <!--
-    <ImageView
-        android:id="@+id/leftArrow"
-        android:layout_width="10dp"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/name_view"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/left_arrow2" />
+    <RelativeLayout
 
-    <ImageView
-        android:id="@+id/rightArrow"
-        android:layout_width="10dp"
-        android:layout_height="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/name_view"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/right_arrow2" />
-    -->
-
-    <ImageView
-        android:id="@+id/meal_image"
-        android:layout_width="300dp"
-        android:layout_height="278dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:adjustViewBounds="true"
-        android:background="#407F7F"
-        android:contentDescription="The meal image"
-        android:padding="9dp"
-        />
-        <!--android:layout_toLeftOf="@id/rightArrow"
-        android:layout_toRightOf="@id/leftArrow"-->
-
-
-    <TextView
-        android:id="@+id/name_view"
-        android:layout_width="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_centerInParent="true"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:minHeight="150dp"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#0D4D4D" />
-        <!--android:layout_toLeftOf="@id/rightArrow"
-        android:layout_toRightOf="@id/leftArrow"-->
+        android:layout_width="match_parent">
 
+        <TextView
+            android:id="@+id/name_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="100dp"
+            android:gravity="center"
+            android:minHeight="150dp"
+            android:shadowColor="#FFF"
+            android:shadowRadius="10.0"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#0D4D4D" />
+
+        <ImageView
+            android:id="@+id/meal_image"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_view"
+            android:adjustViewBounds="true"
+            android:background="#407F7F"
+            android:contentDescription="The meal image"
+            android:padding="9dp"
+            />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>
