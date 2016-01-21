@@ -1,34 +1,25 @@
 package stechb.myfirstapp;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Build;
-import android.os.PersistableBundle;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.MotionEvent;
-import android.view.GestureDetector;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class ShowChosen extends Activity{
 
-   static int id;
-   private String qType;
+    private ArrayList<Integer> recipes = new ArrayList<>();
+    static int id;
+    private String qType;
+    int position = 0;
+    DataBaseHelper db = new DataBaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +31,7 @@ public class ShowChosen extends Activity{
         //Log.d("Query", "Clicked chicken 6");
         qType = intent.getStringExtra("queryType");
         //Log.d("Query",qType);
-        id = showNewRandomMeal();
+        //id = showNewRandomMeal();
         swipeMethod();
 
         View image = (View) findViewById(R.id.meal_image);
@@ -51,7 +42,11 @@ public class ShowChosen extends Activity{
             }
         });
 
+        Log.d("Starting", "Done");
 
+        recipes = getResultList();
+        shuffleList();
+        id = showNewRandomMeal();
 
 
         //arrowClicks();
@@ -63,6 +58,8 @@ public class ShowChosen extends Activity{
         OnSwipeTouchListener swipeListener = new OnSwipeTouchListener(this) {
             @Override
             public boolean onSwipeLeft() {
+                if(position > 0) position--;
+                else position = recipes.size() -1;
                 ShowChosen.id = showNewRandomMeal();
                 Log.d("Swipes","Left swipe " + ShowChosen.id);
                 return true;
@@ -70,6 +67,8 @@ public class ShowChosen extends Activity{
 
             @Override
             public boolean onSwipeRight() {
+                if(position < recipes.size() - 1) position++;
+                else position = 0;
                 ShowChosen.id = showNewRandomMeal();
                 //goToRecipe();
                 Log.d("Swipes","Right swipe");
@@ -88,12 +87,7 @@ public class ShowChosen extends Activity{
         thisLayout.setOnTouchListener(swipeListener);
         View image = (View) findViewById(R.id.meal_image);
         image.setOnTouchListener(swipeListener);
-        /*image.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToRecipe();
-            }
-        });*/
+
     }
 
     public void goToRecipe () {
@@ -107,16 +101,29 @@ public class ShowChosen extends Activity{
         ImageView mealView = (ImageView) findViewById(R.id.meal_image);
         TextView textView = (TextView) findViewById(R.id.name_view);
 
-        Meal meal = chooseRandom();
+
+        db.openDataBase();
+        Meal meal =  db.getMealById(recipes.get(position));
+        db.close();
+
         if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
         textView.setTextSize(40);
         textView.setText(meal.getName());
         return meal.getId();
     }
 
-    public Meal chooseRandom() {
+    private void shuffleList(){
+        int size = recipes.size();
+        for(int i = 0; i < size;i++){
+            Integer r = new Integer((int) (Math.random() * size - 1));
+            int temp = recipes.get(i);
+            recipes.set(i, recipes.get(r));
+            recipes.set(r, temp);
+        }
+    }
+    public ArrayList<Integer> getResultList() {
 
-        DataBaseHelper db = new DataBaseHelper(this);
+
         try {
             db.createDataBase();
         } catch (IOException e) {
@@ -124,9 +131,12 @@ public class ShowChosen extends Activity{
             //throw new Error ("unable to create database");
         }
         db.openDataBase();
-        Meal meal = db.getRandomMeal(qType);
+        recipes = db.getResultList(qType);
         db.close();
-        return meal;
+
+        Log.d("Recipes", " " + recipes.size());
+        return recipes;
+
 
     }
 
