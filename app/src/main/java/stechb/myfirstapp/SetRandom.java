@@ -37,7 +37,7 @@ public class SetRandom extends Activity {
 
     public void beefChosen (View view) {
         Intent toShowChosen = new Intent(this, ShowChosen.class);
-        toShowChosen.putExtra("queryType", "veil = 1");
+        toShowChosen.putExtra("queryType", "beef = 1");
         startActivity(toShowChosen);
     }
 
