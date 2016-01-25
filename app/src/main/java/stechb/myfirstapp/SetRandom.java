@@ -73,6 +73,18 @@ public class SetRandom extends Activity {
         startActivity(toShowChosen);
     }
 
+    public void cuisineChosen (View view, int category) {
+        Intent toShowChosen = new Intent(this, ShowChosen.class);
+        toShowChosen.putExtra("queryType", "cuisine = " + category);
+        startActivity(toShowChosen);
+    }
+
+    public void courseChosen (View view, int category) {
+        Intent toShowChosen = new Intent(this, ShowChosen.class);
+        toShowChosen.putExtra("queryType", "course = " + category);
+        startActivity(toShowChosen);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
