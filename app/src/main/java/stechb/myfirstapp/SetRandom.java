@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import android.app.Activity;
+import android.widget.TabHost;
 
 
 public class SetRandom extends Activity {
@@ -18,6 +19,25 @@ public class SetRandom extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_random);
+        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
+
+        tabHost.setup();
+
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec("meal");
+        tabSpec.setContent(R.id.meatTab);
+        tabSpec.setIndicator("Meat");
+        tabHost.addTab(tabSpec);
+
+        tabSpec = tabHost.newTabSpec("cuisine");
+        tabSpec.setContent(R.id.cuisineTab);
+        tabSpec.setIndicator("Cuisine");
+        tabHost.addTab(tabSpec);
+
+        tabSpec = tabHost.newTabSpec("course");
+        tabSpec.setContent(R.id.courseTab);
+        tabSpec.setIndicator("Course");
+        tabHost.addTab(tabSpec);
+
     }
 
     public void chickenChosen (View view) {

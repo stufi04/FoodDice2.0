@@ -9,231 +9,275 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text = " Choose the type of meal you would like:"
-        android:id = "@+id/instruct"
-        android:layout_marginBottom="10dp"
-        android:textSize="18dp"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-        android:textColor="#0D4D4D"
-        android:gravity = "center"/>
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tabHost"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/meatTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text = " Choose the type of meal you would like:"
+                        android:id = "@+id/instruct"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="18dp"
+                        android:shadowColor="#FFF"
+                        android:shadowRadius="10.0"
+                        android:textColor="#0D4D4D"
+                        android:gravity = "center"/>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Frame1"
+                        android:layout_below="@+id/instruct"
+                        android:background="#407F7F"
+                        android:padding= "5dp">
+
+                        <ImageButton
+                            android:layout_width="147dp"
+                            android:layout_height="133dp"
+                            android:background="@drawable/chicken"
+                            android:id="@+id/iButton1"
+                            android:onClick="chickenChosen" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Frame2"
+                        android:layout_below="@+id/instruct"
+                        android:layout_alignBottom="@+id/Frame1"
+                        android:layout_alignTop="@+id/Frame1"
+                        android:layout_marginLeft="14dp"
+                        android:layout_toRightOf="@+id/Frame1"
+                        android:background="#407F7F"
+                        android:padding= "5dp">
+
+                        <ImageButton
+                            android:layout_width="147dp"
+                            android:layout_height="133dp"
+                            android:background="@drawable/pork"
+                            android:id="@+id/iButton2"
+                            android:onClick="porkChosen"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chicken"
+                        android:id = "@+id/iText1"
+                        android:shadowColor="#FFF"
+                        android:shadowRadius="10.0"
+                        android:textColor="#0D4D4D"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/Frame1"
+                        android:layout_alignLeft= "@+id/Frame1"
+                        android:layout_alignRight="@+id/Frame1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pork"
+                        android:layout_alignBottom="@+id/iText1"
+                        android:layout_alignTop="@+id/iText1"
+                        android:layout_toRightOf="@+id/iText1"
+                        android:layout_below="@+id/Frame2"
+                        android:layout_alignLeft= "@+id/Frame2"
+                        android:layout_alignRight="@+id/Frame2"
+                        android:gravity="center"
+                        android:shadowColor="#FFF"
+                        android:shadowRadius="10.0"
+                        android:textColor="#0D4D4D"
+                        android:textSize="20dp"
+                        android:id="@+id/iText2"/>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Frame3"
+                        android:layout_below="@+id/iText1"
+                        android:layout_marginTop="5dp"
+                        android:background="#407F7F"
+                        android:padding= "5dp">
+
+                        <ImageButton
+                            android:layout_width="147dp"
+                            android:layout_height="133dp"
+                            android:background="@drawable/beef"
+                            android:id="@+id/iButton3"
+                            android:onClick="beefChosen"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Frame4"
+                        android:layout_below="@+id/iText2"
+                        android:layout_alignBottom="@+id/Frame3"
+                        android:layout_alignTop="@+id/Frame3"
+                        android:layout_marginLeft="14dp"
+                        android:layout_toRightOf="@+id/Frame3"
+                        android:background="#407F7F"
+                        android:padding= "5dp">
+
+                        <ImageButton
+                            android:layout_width="147dp"
+                            android:layout_height="133dp"
+                            android:background="@drawable/fish"
+                            android:id="@+id/iButton4"
+                            android:onClick="fishChosen"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Beef"
+                        android:id = "@+id/iText3"
+                        android:shadowColor="#FFF"
+                        android:shadowRadius="10.0"
+                        android:textColor="#0D4D4D"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/Frame3"
+                        android:layout_alignLeft= "@+id/Frame3"
+                        android:layout_alignRight="@+id/Frame3"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fish"
+                        android:layout_alignBottom="@+id/iText3"
+                        android:layout_alignTop="@+id/iText3"
+                        android:layout_toRightOf="@+id/iText3"
+                        android:layout_below="@+id/Frame4"
+                        android:layout_alignLeft= "@+id/Frame4"
+                        android:layout_alignRight="@+id/Frame4"
+                        android:gravity="center"
+                        android:shadowColor="#FFF"
+                        android:shadowRadius="10.0"
+                        android:textColor="#0D4D4D"
+                        android:textSize="20dp"
+                        android:id="@+id/iText4"/>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Frame5"
+                        android:layout_below="@+id/iText3"
+                        android:layout_marginTop="5dp"
+                        android:background="#407F7F"
+                        android:padding= "5dp">
+
+                        <ImageButton
+                            android:layout_width="147dp"
+                            android:layout_height="133dp"
+                            android:background="@drawable/veggie"
+                            android:id="@+id/iButton5"
+                            android:onClick="veggieChosen"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/Frame6"
+                        android:layout_below="@+id/iText4"
+                        android:layout_alignBottom="@+id/Frame5"
+                        android:layout_alignTop="@+id/Frame5"
+                        android:layout_marginLeft="14dp"
+                        android:layout_toRightOf="@+id/Frame5"
+                        android:background="#407F7F"
+                        android:padding= "5dp">
+
+                        <ImageButton
+                            android:layout_width="147dp"
+                            android:layout_height="133dp"
+                            android:background="@drawable/newchef"
+                            android:id="@+id/iButton6"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vegetarian"
+                        android:id = "@+id/iText5"
+                        android:shadowColor="#FFF"
+                        android:shadowRadius="10.0"
+                        android:textColor="#0D4D4D"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/Frame5"
+                        android:layout_alignLeft= "@+id/Frame5"
+                        android:layout_alignRight="@+id/Frame5"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="More options"
+                        android:layout_alignBottom="@+id/iText5"
+                        android:layout_alignTop="@+id/iText5"
+                        android:layout_toRightOf="@+id/iText5"
+                        android:layout_below="@+id/Frame6"
+                        android:layout_alignLeft= "@+id/Frame6"
+                        android:layout_alignRight="@+id/Frame6"
+                        android:gravity="center"
+                        android:shadowColor="#FFF"
+                        android:shadowRadius="10.0"
+                        android:textColor="#0D4D4D"
+                        android:textSize="20dp"
+                        android:id="@+id/iText6"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cuisineTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/courseTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 
     <!-- FIRST ROW OF PICTURES STARTS HERE -->
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Frame1"
-        android:layout_below="@+id/instruct"
-        android:background="#407F7F"
-        android:padding= "5dp">
-
-        <ImageButton
-            android:layout_width="147dp"
-            android:layout_height="133dp"
-            android:background="@drawable/chicken"
-            android:id="@+id/iButton1"
-            android:onClick="chickenChosen" />
-
-    </FrameLayout>
-
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Frame2"
-        android:layout_below="@+id/instruct"
-        android:layout_alignBottom="@+id/Frame1"
-        android:layout_alignTop="@+id/Frame1"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/Frame1"
-        android:background="#407F7F"
-        android:padding= "5dp">
-
-        <ImageButton
-            android:layout_width="147dp"
-            android:layout_height="133dp"
-            android:background="@drawable/pork"
-            android:id="@+id/iButton2"
-            android:onClick="porkChosen"/>
-
-    </FrameLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chicken"
-        android:id = "@+id/iText1"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-        android:textColor="#0D4D4D"
-        android:textSize="20dp"
-        android:layout_below="@+id/Frame1"
-        android:layout_alignLeft= "@+id/Frame1"
-        android:layout_alignRight="@+id/Frame1"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pork"
-        android:layout_alignBottom="@+id/iText1"
-        android:layout_alignTop="@+id/iText1"
-        android:layout_toRightOf="@+id/iText1"
-        android:layout_below="@+id/Frame2"
-        android:layout_alignLeft= "@+id/Frame2"
-        android:layout_alignRight="@+id/Frame2"
-        android:gravity="center"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-        android:textColor="#0D4D4D"
-        android:textSize="20dp"
-        android:id="@+id/iText2"/>
 
     <!-- SECOND ROW OF PICTURES STARTS HERE -->
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Frame3"
-        android:layout_below="@+id/iText1"
-        android:layout_marginTop="5dp"
-        android:background="#407F7F"
-        android:padding= "5dp">
-
-        <ImageButton
-            android:layout_width="147dp"
-            android:layout_height="133dp"
-            android:background="@drawable/beef"
-            android:id="@+id/iButton3"
-            android:onClick="beefChosen"/>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Frame4"
-        android:layout_below="@+id/iText2"
-        android:layout_alignBottom="@+id/Frame3"
-        android:layout_alignTop="@+id/Frame3"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/Frame3"
-        android:background="#407F7F"
-        android:padding= "5dp">
-
-        <ImageButton
-            android:layout_width="147dp"
-            android:layout_height="133dp"
-            android:background="@drawable/fish"
-            android:id="@+id/iButton4"
-            android:onClick="fishChosen"/>
-
-    </FrameLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Beef"
-        android:id = "@+id/iText3"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-        android:textColor="#0D4D4D"
-        android:textSize="20dp"
-        android:layout_below="@+id/Frame3"
-        android:layout_alignLeft= "@+id/Frame3"
-        android:layout_alignRight="@+id/Frame3"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fish"
-        android:layout_alignBottom="@+id/iText3"
-        android:layout_alignTop="@+id/iText3"
-        android:layout_toRightOf="@+id/iText3"
-        android:layout_below="@+id/Frame4"
-        android:layout_alignLeft= "@+id/Frame4"
-        android:layout_alignRight="@+id/Frame4"
-        android:gravity="center"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-        android:textColor="#0D4D4D"
-        android:textSize="20dp"
-        android:id="@+id/iText4"/>
-
     <!-- THIRD ROW OF PICTURES STARTS HERE -->
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Frame5"
-        android:layout_below="@+id/iText3"
-        android:layout_marginTop="5dp"
-        android:background="#407F7F"
-        android:padding= "5dp">
-
-        <ImageButton
-            android:layout_width="147dp"
-            android:layout_height="133dp"
-            android:background="@drawable/veggie"
-            android:id="@+id/iButton5"
-            android:onClick="veggieChosen"/>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Frame6"
-        android:layout_below="@+id/iText4"
-        android:layout_alignBottom="@+id/Frame5"
-        android:layout_alignTop="@+id/Frame5"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/Frame5"
-        android:background="#407F7F"
-        android:padding= "5dp">
-
-        <ImageButton
-            android:layout_width="147dp"
-            android:layout_height="133dp"
-            android:background="@drawable/newchef"
-            android:id="@+id/iButton6"/>
-
-    </FrameLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vegetarian"
-        android:id = "@+id/iText5"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-        android:textColor="#0D4D4D"
-        android:textSize="20dp"
-        android:layout_below="@+id/Frame5"
-        android:layout_alignLeft= "@+id/Frame5"
-        android:layout_alignRight="@+id/Frame5"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="More options"
-        android:layout_alignBottom="@+id/iText5"
-        android:layout_alignTop="@+id/iText5"
-        android:layout_toRightOf="@+id/iText5"
-        android:layout_below="@+id/Frame6"
-        android:layout_alignLeft= "@+id/Frame6"
-        android:layout_alignRight="@+id/Frame6"
-        android:gravity="center"
-        android:shadowColor="#FFF"
-        android:shadowRadius="10.0"
-        android:textColor="#0D4D4D"
-        android:textSize="20dp"
-        android:id="@+id/iText6"/>
 
 </RelativeLayout>
