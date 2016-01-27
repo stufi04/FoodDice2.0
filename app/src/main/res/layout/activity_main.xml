@@ -26,17 +26,28 @@
         android:layout_alignLeft="@+id/btnAdvanced"
         android:layout_alignRight="@+id/btnAdvanced"
         android:onClick="chooseRandom"
-        android:text="Random"
+        android:text="Give Me Random"
         android:textColor="#0D4D4D" />
+
+    <TextView
+        android:id="@+id/txtChoose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Or choose by:"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/btnRandom"
+        android:textColor="#0D4D4D"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <Button
         android:id="@+id/btnAdvanced"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_below="@+id/btnRandom"
+        android:layout_below="@+id/txtChoose"
         android:layout_marginTop="5dp"
         android:onClick="setRandom"
-        android:text="Advanced"
+        android:text="Category"
         android:textColor="#0D4D4D" />
 
     <Button
@@ -47,7 +58,7 @@
         android:layout_below="@+id/btnAdvanced"
         android:layout_marginTop="5dp"
         android:onClick="openSettings"
-        android:text="Cuisine"
+        android:text="Ingredients"
         android:textColor="#0D4D4D" />
 
     </RelativeLayout>
