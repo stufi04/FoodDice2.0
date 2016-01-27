@@ -1,6 +1,7 @@
 package stechb.myfirstapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.RadioButton;
 
 import android.app.Activity;
 import android.widget.TabHost;
+import android.widget.TabWidget;
+import android.widget.TextView;
 
 
 public class SetRandom extends Activity {
@@ -19,7 +22,7 @@ public class SetRandom extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_random);
-        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
+        final TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
 
         tabHost.setup();
 
@@ -38,36 +41,55 @@ public class SetRandom extends Activity {
         tabSpec.setIndicator("Course");
         tabHost.addTab(tabSpec);
 
+        for (int i = 0; i < 3; i++) {
+            TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+            tv.setTextColor(Color.parseColor("#0D4D4D"));
+            if (i == 0) tv.setShadowLayer(10, 1, 1, Color.WHITE);
+        }
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+
+            @Override
+            public void onTabChanged(String tabId) {
+
+                for (int i = 0; i < 3; i++) {
+                    TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+                    tv.setShadowLayer(0,0,0,Color.WHITE);
+                }
+
+                TextView tv = (TextView) tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).findViewById(android.R.id.title);
+                tv.setShadowLayer(10,1,1,Color.WHITE);;
+
+            }
+        });
+
     }
 
-    public void chickenChosen (View view) {
-        Log.d("Query", "Clicked chicken 1");
+    public void chickenChosen(View view) {
         Intent toShowChosen = new Intent(this, ShowChosen.class);
-        Log.d("Query", "Clicked chicken 2");
         toShowChosen.putExtra("queryType", "chicken = 1");
-        Log.d("Query", "Clicked chicken 3");
         startActivity(toShowChosen);
     }
 
-    public void porkChosen (View view) {
+    public void porkChosen(View view) {
         Intent toShowChosen = new Intent(this, ShowChosen.class);
         toShowChosen.putExtra("queryType", "pork = 1");
         startActivity(toShowChosen);
     }
 
-    public void beefChosen (View view) {
+    public void beefChosen(View view) {
         Intent toShowChosen = new Intent(this, ShowChosen.class);
         toShowChosen.putExtra("queryType", "beef = 1");
         startActivity(toShowChosen);
     }
 
-    public void fishChosen (View view) {
+    public void fishChosen(View view) {
         Intent toShowChosen = new Intent(this, ShowChosen.class);
         toShowChosen.putExtra("queryType", "fish = 1");
         startActivity(toShowChosen);
     }
 
-    public void veggieChosen (View view) {
+    public void veggieChosen(View view) {
         Intent toShowChosen = new Intent(this, ShowChosen.class);
         toShowChosen.putExtra("queryType", "veggie = 1");
         startActivity(toShowChosen);
