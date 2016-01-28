@@ -217,7 +217,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             id = c.getInt(0);
 
             recipe = String.valueOf(c.getString(2));
-            ingredients = String.valueOf(c.getString(9));
+            ingredients = String.valueOf(c.getString(12));
 
             byteArray = c.getBlob(3);
             c.close();
