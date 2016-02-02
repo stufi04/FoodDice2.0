@@ -1,6 +1,7 @@
 package stechb.myfirstapp;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,6 +28,42 @@ public class Ingredients extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredients);
+
+        final TabHost tabHost = (android.widget.TabHost) findViewById(R.id.tabHost2);
+
+        tabHost.setup();
+
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec("search");
+        tabSpec.setContent(R.id.searchTab);
+        tabSpec.setIndicator("Search");
+        tabHost.addTab(tabSpec);
+
+        tabSpec = tabHost.newTabSpec("IngredientsList");
+        tabSpec.setContent(R.id.listTab);
+        tabSpec.setIndicator("All ingredients");
+        tabHost.addTab(tabSpec);
+
+        for (int i = 0; i < 2; i++) {
+            TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+            tv.setTextColor(Color.parseColor("#0D4D4D"));
+            if (i == 0) tv.setShadowLayer(10, 1, 1, Color.WHITE);
+        }
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+
+            @Override
+            public void onTabChanged(String tabId) {
+
+                for (int i = 0; i < 2; i++) {
+                    TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+                    tv.setShadowLayer(0,0,0,Color.WHITE);
+                }
+
+                TextView tv = (TextView) tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).findViewById(android.R.id.title);
+                tv.setShadowLayer(10,1,1,Color.WHITE);;
+
+            }
+        });
 
         DataBaseHelper db = new DataBaseHelper(this);
         ingredientsMap = db.getIngredientsMap();

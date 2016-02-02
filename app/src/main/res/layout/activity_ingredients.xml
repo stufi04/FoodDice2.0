@@ -2,29 +2,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cooking"
+    tools:context=".Ingredients"
+    android:paddingBottom="4dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".Ingredients"
-    android:background="@drawable/cooking">
+    android:paddingTop="4dp">
 
-    <AutoCompleteTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/autoCompleteTextView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:ems="15"
-        android:hint="Search for ingredient"/>
+    <TabHost
+        android:id="@+id/tabHost2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-    <ImageView
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/autoCompleteTextView"
-        android:layout_marginRight="3dp"
-        android:layout_alignBottom="@+id/autoCompleteTextView"
-        android:layout_alignTop="@+id/autoCompleteTextView"
-        android:background="@drawable/search"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/searchTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:orientation="vertical">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCompleteTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp"
+                        android:ems="15"
+                        android:hint="Search for ingredients" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/autoCompleteTextView"
+                        android:layout_alignTop="@+id/autoCompleteTextView"
+                        android:layout_marginRight="3dp"
+                        android:layout_toLeftOf="@+id/autoCompleteTextView"
+                        android:background="@drawable/search" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/listTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </TabHost>
 
 </RelativeLayout>
