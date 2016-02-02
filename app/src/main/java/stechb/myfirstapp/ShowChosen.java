@@ -24,14 +24,12 @@ public class ShowChosen extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Log.d("Query", "Clicked chicken 4");
+
         setContentView(R.layout.chosen_show);
-        //Log.d("Query", "Clicked chicken 5");
+
         Intent intent = getIntent();
-        //Log.d("Query", "Clicked chicken 6");
         qType = intent.getStringExtra("queryType");
-        //Log.d("Query",qType);
-        //id = showNewRandomMeal();
+
         swipeMethod();
 
         View image = (View) findViewById(R.id.meal_image);
@@ -42,14 +40,10 @@ public class ShowChosen extends Activity{
             }
         });
 
-        Log.d("Starting", "Done");
-
         recipes = getResultList();
         shuffleList();
         id = showNewRandomMeal();
 
-
-        //arrowClicks();
     }
 
 
@@ -61,7 +55,6 @@ public class ShowChosen extends Activity{
                 if(position > 0) position--;
                 else position = recipes.size() -1;
                 ShowChosen.id = showNewRandomMeal();
-                Log.d("Swipes","Left swipe " + ShowChosen.id);
                 return true;
             }
 
@@ -70,15 +63,12 @@ public class ShowChosen extends Activity{
                 if(position < recipes.size() - 1) position++;
                 else position = 0;
                 ShowChosen.id = showNewRandomMeal();
-                //goToRecipe();
-                Log.d("Swipes","Right swipe");
                 return true;
             }
 
             @Override
             public boolean onTap(){
                 goToRecipe();
-                Log.d("Swipes", "Tap");
                 return true;
             }
 
@@ -101,10 +91,9 @@ public class ShowChosen extends Activity{
         ImageView mealView = (ImageView) findViewById(R.id.meal_image);
         TextView textView = (TextView) findViewById(R.id.name_view);
 
-
-        db.openDataBase();
+        //db.openDataBase();
         Meal meal =  db.getMealById(recipes.get(position));
-        db.close();
+        //db.close();
 
         if (meal.getImage() != null) mealView.setImageBitmap(meal.getImage());
         textView.setTextSize(40);
@@ -123,18 +112,15 @@ public class ShowChosen extends Activity{
     }
     public ArrayList<Integer> getResultList() {
 
-
-        try {
+        /*try {
             db.createDataBase();
         } catch (IOException e) {
             e.printStackTrace();
-            //throw new Error ("unable to create database");
         }
-        db.openDataBase();
+        db.openDataBase();*/
         recipes = db.getResultList(qType);
-        db.close();
+        //db.close();
 
-        Log.d("Recipes", " " + recipes.size());
         return recipes;
 
 

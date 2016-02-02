@@ -15,17 +15,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
  * Created by iange_000 on 04-Feb-15.
  */
 public class DataBaseHelper extends SQLiteOpenHelper {
-    //Change the package name when finish
-    //private static String DB_PATH = Context.getFilesDir().getPath();
     private static String DB_PATH = "/data/data/stechb.myfirstapp/databases/";
-    //private static String DB_PATH = "/app/src/main/assets";
-    //TODO change the name with the real name
     private static String DB_NAME = "recipes.db";
     private final Context myContext;
     private SQLiteDatabase myDB;
@@ -121,41 +118,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public String getMealFromDB() {
-        try {
-
-            String dbString = "";
-            createDataBase();
-            SQLiteDatabase db = getReadableDatabase();
-
-            String query = "SELECT * FROM recipes WHERE recipes.name = 'testname';";
-
-
-            Cursor c = db.rawQuery(query, null);
-
-            int i = 0;
-            while (!c.isAfterLast()) {
-                i++;
-                c.moveToNext();
-
-            }
-            c.moveToFirst();
-            Integer r = new Integer((int) (Math.random() * i - 1));
-            c.move(r);
-
-            dbString = String.valueOf(c.getString(1));
-            db.close();
-            return dbString;
-        } catch (Exception e) {
-            return "Musaka";
-        }
-    }
 
     public ArrayList<Integer> getResultList(String q) {
         try {
-
-
-            Log.d("DB", q);
 
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
@@ -167,31 +132,52 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             ArrayList<Integer> recipes = new ArrayList<Integer>();
 
-
-            int i = 0;
-
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                Log.d("DB", i + " " + c.getInt(0));
                 recipes.add(c.getInt(0));
-                i++;
                 c.moveToNext();
             }
-
 
             c.close();
             db.close();
 
             return recipes;
         } catch (Exception e) {
-            e = new Exception("cannot get meal from DB");
+            e = new Exception("cannot get meals from DB");
         }
         return null;
 
+    }
+
+    public HashMap<String, Integer> getIngredientsMap() {
+        try {
+
+            createDataBase();
+            SQLiteDatabase db = getReadableDatabase();
+
+            String query = "SELECT _id,name FROM ingredients";
+            Cursor c = db.rawQuery(query, null);
+
+            HashMap<String, Integer> ingredients = new HashMap<>();
+
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                ingredients.put(c.getString(1), c.getInt(0));
+                c.moveToNext();
+            }
+
+            c.close();
+            db.close();
+
+            return ingredients;
+        } catch (Exception e) {
+            e = new Exception("cannot get ingredients from DB");
+        }
+        return null;
 
     }
 
-    Meal getMealById(int idOut) {
+    public Meal getMealById(int idOut) {
         try {
             int id;
             String name = "";
@@ -209,9 +195,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             Cursor c = db.rawQuery(query, null);
 
-
             c.moveToFirst();
-
 
             name = String.valueOf(c.getString(1));
             id = c.getInt(0);
@@ -227,12 +211,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             try {
                 Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                 Meal meal = new Meal(id, name, recipe, ingredients, bmp);
-                Log.d("MYMSG", "FROM TRY" + bmp.getByteCount());
                 return meal;
             } catch (Exception e) {
                 e.printStackTrace();
                 Meal meal = new Meal(id, name, recipe, ingredients, null);
-                Log.d("MYMSG", "FROM FROMCATCH");
                 return meal;
             }
         } catch (Exception e) {
