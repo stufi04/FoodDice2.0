@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingBottom="4dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingRight="1dp"
     android:paddingTop="4dp"
     tools:context="stechb.myfirstapp.SetRandom">
 
@@ -27,8 +27,11 @@
             android:id="@android:id/tabcontent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="80dp">
-
+            android:paddingTop="60dp"
+            >
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
             <LinearLayout
                 android:id="@+id/meatTab"
                 android:layout_width="match_parent"
@@ -36,67 +39,68 @@
                 android:baselineAligned="true"
                 android:focusable="false"
                 android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingRight="10dp">
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:onClick="chickenChosen"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginRight="100dp"
-                    android:text="Chicken"
-                    android:background="@drawable/chicken"
-                    android:textSize="40dp"
-                    android:textColor="#0D4D4D"
-                    android:shadowColor="#FFF"
-                    android:shadowRadius="20.0"/>
+
 
                 <ImageButton
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:background="@drawable/chicken"
+                    android:layout_height="90dp"
+                    android:background="@drawable/pork"
                     android:onClick="porkChosen"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginRight="100dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    />
 
                 <ImageButton
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:background="@drawable/chicken"
-                    android:onClick="beefChosen"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginRight="100dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_height="90dp"
+                    android:background="@drawable/pork"
+                    android:onClick="chickenChosen"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="5dp"
+                    />
 
                 <ImageButton
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:background="@drawable/chicken"
+                    android:layout_height="90dp"
+                    android:background="@drawable/pork"
                     android:onClick="fishChosen"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginRight="100dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="5dp"
+                    />
 
                 <ImageButton
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:background="@drawable/chicken"
+                    android:layout_height="90dp"
+                    android:background="@drawable/pork"
                     android:onClick="otherChosen"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginRight="100dp"
-                    android:layout_marginTop="20dp"/>
-
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="5dp"
+                    />
                 <ImageButton
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:background="@drawable/chicken"
-                    android:onClick="veggieChosen"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginRight="100dp"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_height="90dp"
+                    android:background="@drawable/pork"
+                    android:onClick="otherChosen"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="5dp"
+                    />
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:background="@drawable/pork"
+                    android:onClick="otherChosen"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="5dp"
+                    />
+
+
 
             </LinearLayout>
+            </ScrollView>
 
             <LinearLayout
                 android:id="@+id/courseTab"
