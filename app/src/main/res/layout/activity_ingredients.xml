@@ -65,7 +65,7 @@
                         android:id="@+id/horizontalScrollView"
                         android:layout_below="@+id/autoCompleteTextView"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="51dp"
+                        android:layout_marginTop="50dp"
                         android:scrollbars="none">
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -75,30 +75,55 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button2" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button3" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button4" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button5" />
 
                         <Button
@@ -106,12 +131,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button6" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
                             android:id="@+id/button7" />
                     </LinearLayout>
                     </HorizontalScrollView>
@@ -120,12 +154,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/horizontalScrollView2"
-                        android:layout_toEndOf="@+id/imageView2"
-                        android:layout_marginTop="100dp"
+                        android:layout_below="@+id/horizontalScrollView"
+                        android:layout_marginTop="5dp"
                         android:scrollbars="none"
-                        android:layout_below="@+id/imageView"
-                        android:layout_centerHorizontal="true"
-                        android:layout_alignParentStart="true">
+                        android:layout_centerHorizontal="true">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -134,43 +167,76 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button8" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button9" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button10" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button11" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button12" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="5dp"
                             android:id="@+id/button13" />
 
                         <Button
-                            style="?android:attr/buttonStyleSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="New Button"
+                            android:background="#44FFFFFF"
+                            android:textColor="#0D4D4D"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
                             android:id="@+id/button14" />
                     </LinearLayout>
                     </HorizontalScrollView>
