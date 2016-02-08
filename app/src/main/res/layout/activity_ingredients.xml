@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/cooking"
-    tools:context=".Ingredients"
     android:paddingBottom="4dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="4dp">
+    android:paddingTop="4dp"
+    tools:context=".Ingredients">
 
     <TabHost
         android:id="@+id/tabHost2"
@@ -36,8 +36,8 @@
                     android:id="@+id/searchTab"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/activity_vertical_margin">
 
                     <AutoCompleteTextView
                         android:id="@+id/autoCompleteTextView"
@@ -50,195 +50,182 @@
                         android:hint="Search for ingredients" />
 
                     <ImageView
+                        android:id="@+id/imageView"
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/autoCompleteTextView"
                         android:layout_alignTop="@+id/autoCompleteTextView"
                         android:layout_marginRight="3dp"
                         android:layout_toLeftOf="@+id/autoCompleteTextView"
-                        android:background="@drawable/search"
-                        android:id="@+id/imageView" />
+                        android:background="@drawable/search" />
 
                     <HorizontalScrollView
+                        android:id="@+id/horizontalScrollView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/horizontalScrollView"
                         android:layout_below="@+id/autoCompleteTextView"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="50dp"
                         android:scrollbars="none">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
-                        <Button
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button" />
+                            android:layout_height="wrap_content">
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button2" />
+                            <Button
+                                android:id="@+id/button1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button3" />
+                            <Button
+                                android:id="@+id/button2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button4" />
+                            <Button
+                                android:id="@+id/button3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button5" />
+                            <Button
+                                android:id="@+id/button4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button6" />
+                            <Button
+                                android:id="@+id/button5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:id="@+id/button7" />
-                    </LinearLayout>
+                            <Button
+                                android:id="@+id/button6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
+
+                            <Button
+                                android:id="@+id/button7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
+                        </LinearLayout>
                     </HorizontalScrollView>
 
                     <HorizontalScrollView
+                        android:id="@+id/horizontalScrollView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/horizontalScrollView2"
                         android:layout_below="@+id/horizontalScrollView"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
-                        android:scrollbars="none"
-                        android:layout_centerHorizontal="true">
+                        android:scrollbars="none">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <Button
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button8" />
+                            android:layout_height="wrap_content">
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button9" />
+                            <Button
+                                android:id="@+id/button8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button10" />
+                            <Button
+                                android:id="@+id/button9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button11" />
+                            <Button
+                                android:id="@+id/button10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button12" />
+                            <Button
+                                android:id="@+id/button11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:layout_marginRight="5dp"
-                            android:id="@+id/button13" />
+                            <Button
+                                android:id="@+id/button12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
 
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="New Button"
-                            android:background="#44FFFFFF"
-                            android:textColor="#0D4D4D"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
-                            android:id="@+id/button14" />
-                    </LinearLayout>
+                            <Button
+                                android:id="@+id/button13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
+
+                            <Button
+                                android:id="@+id/button14"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#44FFFFFF"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:textColor="#0D4D4D" />
+                        </LinearLayout>
+
                     </HorizontalScrollView>
 
                 </RelativeLayout>

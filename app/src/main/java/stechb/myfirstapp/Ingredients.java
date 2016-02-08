@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,6 +25,7 @@ import java.util.HashMap;
 public class Ingredients extends Activity {
 
     HashMap<String, Integer> ingredientsMap = new HashMap<>();
+    ArrayList<String> availableIngredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +70,28 @@ public class Ingredients extends Activity {
 
         DataBaseHelper db = new DataBaseHelper(this);
         ingredientsMap = db.getIngredientsMap();
+        availableIngredients = new ArrayList<>(ingredientsMap.keySet());
+
+        for(int i=1;i<=14;i++) {
+            takeRandomSuggestion((Integer)i);
+        }
 
         AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         String[] ingredients = ingredientsMap.keySet().toArray(new String[ingredientsMap.size()]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, ingredients);
         actv.setAdapter(adapter);
+    }
+
+    public void takeRandomSuggestion(Integer buttonNum) {
+
+        String buttonID = "button" + buttonNum.toString();
+        int resID = getResources().getIdentifier(buttonID, "id", "stechb.myfirstapp");
+        Button b = (Button) findViewById(resID);
+
+        int ingrNum = availableIngredients.size();
+        Integer r = new Integer((int) (Math.random() * ingrNum));
+        b.setText(availableIngredients.get(r));
+
     }
 
     @Override
