@@ -39,31 +39,37 @@
                     android:orientation="vertical"
                     android:paddingTop="@dimen/activity_vertical_margin">
 
-                    <AutoCompleteTextView
-                        android:id="@+id/autoCompleteTextView"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="30dp"
-                        android:ems="15"
-                        android:hint="Search for ingredients" />
+                        android:id="@+id/layoutSearchField">
 
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="25dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/autoCompleteTextView"
-                        android:layout_alignTop="@+id/autoCompleteTextView"
-                        android:layout_marginRight="3dp"
-                        android:layout_toLeftOf="@+id/autoCompleteTextView"
-                        android:background="@drawable/search" />
+                        <AutoCompleteTextView
+                            android:id="@+id/autoCompleteTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:ems="15"
+                            android:hint="Search for ingredients" />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="25dp"
+                            android:layout_height="30dp"
+                            android:layout_alignBottom="@+id/autoCompleteTextView"
+                            android:layout_alignTop="@+id/autoCompleteTextView"
+                            android:layout_marginRight="3dp"
+                            android:layout_toLeftOf="@+id/autoCompleteTextView"
+                            android:background="@drawable/search" />
+
+                    </RelativeLayout>
 
                     <HorizontalScrollView
                         android:id="@+id/horizontalScrollView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/autoCompleteTextView"
+                        android:layout_below="@+id/layoutSearchField"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="50dp"
                         android:scrollbars="none">

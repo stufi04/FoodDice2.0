@@ -26,6 +26,7 @@ public class Ingredients extends Activity {
 
     HashMap<String, Integer> ingredientsMap = new HashMap<>();
     ArrayList<String> availableIngredients;
+    ArrayList<String> suggestedIngredients = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +91,11 @@ public class Ingredients extends Activity {
 
         int ingrNum = availableIngredients.size();
         Integer r = new Integer((int) (Math.random() * ingrNum));
-        b.setText(availableIngredients.get(r));
+        String ingredient = availableIngredients.get(r);
+        b.setText(ingredient);
+
+        suggestedIngredients.add(ingredient);
+        availableIngredients.remove(r);
 
     }
 
