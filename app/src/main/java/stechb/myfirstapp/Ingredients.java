@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -81,6 +82,12 @@ public class Ingredients extends Activity {
         String[] ingredients = ingredientsMap.keySet().toArray(new String[ingredientsMap.size()]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, ingredients);
         actv.setAdapter(adapter);
+
+        HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
+        scrollView.scrollTo(scrollView.getMaxScrollAmount()/2, 0);
+        scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView2);
+        scrollView.scrollTo(scrollView.getMaxScrollAmount()/2, 0);
+
     }
 
     public void takeRandomSuggestion(Integer buttonNum) {
