@@ -84,9 +84,10 @@ public class Ingredients extends Activity {
         actv.setAdapter(adapter);
 
         HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
-        scrollView.scrollTo(scrollView.getMaxScrollAmount()/2, 0);
+        Log.e("ScrollWidth",Integer.toString(scrollView.getChildAt(0).getMeasuredWidth()));
+        scrollView.scrollTo(scrollView.getChildAt(0).getWidth()/2, 0);
         scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView2);
-        scrollView.scrollTo(scrollView.getMaxScrollAmount()/2, 0);
+        scrollView.scrollTo(0,scrollView.getRight()/2);
 
     }
 

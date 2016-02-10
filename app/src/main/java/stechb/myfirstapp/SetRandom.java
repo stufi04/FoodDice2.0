@@ -95,15 +95,15 @@ public class SetRandom extends Activity {
         startActivity(toShowChosen);
     }
 
-    public void cuisineChosen (View view, int category) {
+    public void cuisineChosen (View view) {
         Intent toShowChosen = new Intent(this, ShowChosen.class);
-        toShowChosen.putExtra("queryType", "cuisine = " + category);
+        toShowChosen.putExtra("queryType", "cuisine = " + view.getTag());
         startActivity(toShowChosen);
     }
 
-    public void courseChosen (View view, int category) {
+    public void courseChosen (View view) {
         Intent toShowChosen = new Intent(this, ShowChosen.class);
-        toShowChosen.putExtra("queryType", "course = " + category);
+        toShowChosen.putExtra("queryType", "course = " + view.getTag());
         startActivity(toShowChosen);
     }
 

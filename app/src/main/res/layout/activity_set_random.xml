@@ -27,12 +27,8 @@
             android:id="@android:id/tabcontent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="60dp"
-            >
-            <ScrollView
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:paddingTop="60dp">
+
             <LinearLayout
                 android:id="@+id/meatTab"
                 android:layout_width="match_parent"
@@ -43,163 +39,548 @@
                 android:orientation="vertical"
                 android:paddingRight="10dp">
 
-                <RelativeLayout
-                    android:orientation="horizontal"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_marginRight="5dp"
-                    >
-                    <ImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:background="@drawable/chicken"
-                        android:onClick="chickenChosen"
-                        android:id="@+id/chickenImage"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
 
-                        />
-                    <Button
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:text="Chicken"
-                        android:background="#44FFFFFF"
-                        android:textColor="#0D4D4D"
-                        android:onClick="porkChosen"
-                        android:textSize="20dp"
-                        android:layout_toRightOf="@+id/chickenImage"
-                        />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="5dp"
-                    >
+                        android:layout_height="match_parent"
+                        android:baselineAligned="true"
+                        android:focusable="false"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/porkImage"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:background="@drawable/pork"
-                        android:layout_alignParentRight="true"
-                        android:onClick="porkChosen"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal">
 
+                            <ImageView
+                                android:id="@+id/chickenImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/chicken"
+                                android:onClick="chickenChosen"
 
-                    />
-                    <Button
-                        android:id="@+id/porkButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:text="Pork"
-                        android:background="#44FFFFFF"
-                        android:textColor="#0D4D4D"
-                        android:onClick="porkChosen"
-                        android:textSize="20dp"
-                        android:layout_toLeftOf="@+id/porkImage"
-                        />
+                                />
 
-                </RelativeLayout>
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/chickenImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="porkChosen"
+                                android:text="Chicken"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
 
-                <RelativeLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="5dp"
-                    >
-                    <ImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:background="@drawable/beef"
-                        android:onClick="beefChosen"
-                        android:id="@+id/beefImage"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
 
-                        />
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:text="Beef"
-                        android:background="#44FFFFFF"
-                        android:textColor="#0D4D4D"
-                        android:onClick="beefChosen"
-                        android:textSize="20dp"
-                        android:layout_toRightOf="@+id/beefImage"
-                        />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="5dp"
-                    >
-
-                    <ImageView
-                        android:id="@+id/fishImage"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:background="@drawable/fish"
-                        android:layout_alignParentRight="true"
-                        android:onClick="fishChosen"
+                            <ImageView
+                                android:id="@+id/porkImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/pork"
+                                android:onClick="porkChosen"
 
 
-                        />
-                    <Button
-                        android:id="@+id/fishButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:text="Fish"
-                        android:background="#44FFFFFF"
-                        android:textColor="#0D4D4D"
-                        android:onClick="fishChosen"
-                        android:textSize="20dp"
-                        android:layout_toLeftOf="@+id/fishImage"
-                        />
+                                />
 
-                </RelativeLayout>
-                <RelativeLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="5dp"
-                    >
-                    <ImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:background="@drawable/vegie"
-                        android:onClick="veggieChosen"
-                        android:id="@+id/veggieImage"
+                            <Button
+                                android:id="@+id/porkButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toLeftOf="@+id/porkImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="porkChosen"
+                                android:text="Pork"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
 
-                        />
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:text="Vegetarian"
-                        android:background="#44FFFFFF"
-                        android:textColor="#0D4D4D"
-                        android:onClick="veggieChosen"
-                        android:textSize="20dp"
-                        android:layout_toRightOf="@+id/veggieImage"
-                        />
-                </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/beefImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/beef"
+                                android:onClick="beefChosen"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/beefImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="beefChosen"
+                                android:text="Beef"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/fishImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/fish"
+                                android:onClick="fishChosen"
 
 
+                                />
 
+                            <Button
+                                android:id="@+id/fishButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toLeftOf="@+id/fishImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="fishChosen"
+                                android:text="Fish"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/veggieImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/vegie"
+                                android:onClick="veggieChosen"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/veggieImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="veggieChosen"
+                                android:text="Vegetarian"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </ScrollView>
             </LinearLayout>
-            </ScrollView>
+
 
             <LinearLayout
                 android:id="@+id/courseTab"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:baselineAligned="true"
+                        android:focusable="false"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/saladImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/salad"
+                                android:onClick="courseChosen"
+                                android:tag="1"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/saladImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="courseChosen"
+                                android:tag="1"
+                                android:text="Salad"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/soupImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/soup"
+                                android:onClick="courseChosen"
+                                android:tag="2"
+
+
+                                />
+
+                            <Button
+                                android:id="@+id/soupButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toLeftOf="@+id/soupImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="courseChosen"
+                                android:tag="2"
+                                android:text="Soup"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/appetizerImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/appetizer"
+                                android:onClick="courseChosen"
+                                android:tag="3"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/appetizerImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="courseChosen"
+                                android:tag="3"
+                                android:text="Appetizer"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/mainImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/main"
+                                android:onClick="courseChosen"
+                                android:tag="4"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toLeftOf="@+id/mainImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="courseChosen"
+                                android:tag="4"
+                                android:text="Main"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/dessertImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/dessert"
+                                android:onClick="coursehosen"
+                                android:tag="5"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/dessertImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="courseChosen"
+                                android:tag="5"
+                                android:text="Dessert"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+                </ScrollView>
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/cuisineTab"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:baselineAligned="true"
+                        android:focusable="false"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/AmericanImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/american"
+                                android:onClick="cuisineChosen"
+                                android:tag="1"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/AmericanImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="cuisineChosen"
+                                android:tag="1"
+                                android:text="American"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/AsianImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/asian"
+                                android:onClick="cuisineChosen"
+                                android:tag="2"
+
+
+                                />
+
+                            <Button
+                                android:id="@+id/AsiankButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toLeftOf="@+id/AsianImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="cuisineChosen"
+                                android:tag="2"
+                                android:text="Asian"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/italianImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/italian"
+                                android:onClick="cuisineChosen"
+                                android:tag="3"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/italianImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="cuisineChosen"
+                                android:tag="3"
+                                android:text="Italian"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/EuropeanImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/european"
+                                android:onClick="cuisineChosen"
+                                android:tag="4"
+
+                                />
+
+                            <Button
+                                android:id="@+id/eropeanButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toLeftOf="@+id/EuropeanImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="cuisineChosen"
+                                android:tag="4"
+                                android:text="European"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/mexicanImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/mexican"
+                                android:onClick="cuisineChosen"
+                                android:tag="5"
+
+                                />
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toRightOf="@+id/mexicanImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="cuisineChosen"
+                                android:tag="5"
+                                android:text="Mexican"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/balkanImage"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/balkan"
+                                android:onClick="cuisineChosen"
+                                android:tag="6"
+
+
+                                />
+
+                            <Button
+                                android:id="@+id/balkanButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_toLeftOf="@+id/balkanImage"
+                                android:background="#44FFFFFF"
+                                android:onClick="cuisineChosen"
+                                android:tag="6"
+                                android:text="Balkan"
+                                android:textColor="#0D4D4D"
+                                android:textSize="20dp" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
 
         </FrameLayout>
     </TabHost>
