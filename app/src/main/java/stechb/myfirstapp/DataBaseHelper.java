@@ -149,6 +149,54 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public ArrayList<Integer> getRecipesByIngredients(int type, ArrayList<Integer> ingredients ) {
+        try {
+
+            createDataBase();
+            SQLiteDatabase db = getReadableDatabase();
+
+            String query = "select R._id, count(I._id) from Recipes R, recipesIngredients C where (";
+            for(Integer i : ingredients){
+                query += ", C.ingredientID = " + i;
+            }
+            query += ") and C.ingredientID = I._id and C.recipeID = R._id group by R._id order by count(I._id) desc ";
+
+            Cursor c = db.rawQuery(query, null);
+
+            ArrayList<Integer> recipes = new ArrayList<Integer>();
+
+            c.moveToFirst();
+
+            int l = ingredients.size();
+
+            if(type == 0) {
+                while (!c.isAfterLast() && (c.getInt(1) > l - 3)) {
+
+                    recipes.add(c.getInt(0));
+                    c.moveToNext();
+
+                }
+            }
+            if(type == 1){
+                while (!c.isAfterLast() && (c.getInt(1) == l )) {
+
+                    recipes.add(c.getInt(0));
+                    c.moveToNext();
+
+                }
+            }
+            c.close();
+            db.close();
+
+            return recipes;
+        } catch (Exception e) {
+            e = new Exception("cannot get meals from DB");
+        }
+        return null;
+
+    }
+
+
     public HashMap<String, Integer> getIngredientsMap() {
         try {
 
