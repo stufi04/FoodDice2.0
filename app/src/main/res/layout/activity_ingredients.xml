@@ -65,13 +65,22 @@
 
                     </RelativeLayout>
 
+                    <TextView
+                        android:id="@+id/txtSuggested"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Suggested:"
+                        android:layout_marginTop="50dp"
+                        android:layout_below="@+id/layoutSearchField"
+                        android:textColor="#0D4D4D"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
                     <HorizontalScrollView
                         android:id="@+id/horizontalScrollView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/layoutSearchField"
+                        android:layout_below="@+id/txtSuggested"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="50dp"
                         android:scrollbars="none">
 
                         <LinearLayout
@@ -146,6 +155,7 @@
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
                                 android:textColor="#0D4D4D" />
+
                         </LinearLayout>
                     </HorizontalScrollView>
 
