@@ -33,7 +33,6 @@
                 android:id="@+id/meatTab"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:baselineAligned="true"
                 android:focusable="false"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
@@ -41,8 +40,9 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -63,16 +63,14 @@
                                 android:layout_width="90dp"
                                 android:layout_height="90dp"
                                 android:background="@drawable/chicken"
-                                android:onClick="chickenChosen"
-
-                                />
+                                android:onClick="chickenChosen" />
 
                             <Button
                                 android:layout_width="match_parent"
                                 android:layout_height="90dp"
                                 android:layout_toRightOf="@+id/chickenImage"
                                 android:background="#44FFFFFF"
-                                android:onClick="porkChosen"
+                                android:onClick="chickenChosen"
                                 android:text="Chicken"
                                 android:textColor="#0D4D4D"
                                 android:textSize="20dp" />
@@ -203,12 +201,16 @@
                 android:id="@+id/courseTab"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingRight="10dp">
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -379,12 +381,16 @@
                 android:id="@+id/cuisineTab"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingRight="10dp">
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
