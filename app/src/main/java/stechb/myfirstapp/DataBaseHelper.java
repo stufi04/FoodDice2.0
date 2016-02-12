@@ -197,7 +197,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public HashMap<String, Integer> getIngredientsMap() {
+    public HashMap<Integer, String> getIngredientsMap() {
         try {
 
             createDataBase();
@@ -206,11 +206,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String query = "SELECT _id,name FROM ingredients";
             Cursor c = db.rawQuery(query, null);
 
-            HashMap<String, Integer> ingredients = new HashMap<>();
+            HashMap<Integer, String> ingredients = new HashMap<>();
 
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                ingredients.put(c.getString(1), c.getInt(0));
+                ingredients.put(c.getInt(0), c.getString(1));
                 c.moveToNext();
             }
 

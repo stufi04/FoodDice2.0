@@ -15,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -25,9 +26,9 @@ import java.util.HashMap;
 
 public class Ingredients extends Activity {
 
-    HashMap<String, Integer> ingredientsMap = new HashMap<>();
-    ArrayList<String> availableIngredients;
-    ArrayList<String> suggestedIngredients = new ArrayList<>();
+    HashMap<Integer, String> ingredientsMap = new HashMap<>();
+    ArrayList<Integer> availableIngredients;
+    ArrayList<Integer> suggestedIngredients = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,20 +75,23 @@ public class Ingredients extends Activity {
         ingredientsMap = db.getIngredientsMap();
         availableIngredients = new ArrayList<>(ingredientsMap.keySet());
 
-        for(int i=1;i<=14;i++) {
+        for(int i=1;i<=10;i++) {
             takeRandomSuggestion((Integer)i);
         }
 
         AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
-        String[] ingredients = ingredientsMap.keySet().toArray(new String[ingredientsMap.size()]);
+        String[] ingredients = ingredientsMap.values().toArray(new String[ingredientsMap.size()]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, ingredients);
         actv.setAdapter(adapter);
 
-        HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
-        Log.e("ScrollWidth",Integer.toString(scrollView.getChildAt(0).getMeasuredWidth()));
-        scrollView.scrollTo(scrollView.getChildAt(0).getWidth()/2, 0);
-        scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView2);
-        scrollView.scrollTo(0,scrollView.getRight()/2);
+        final HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.searchTab);
+                scrollView.scrollTo((scrollView.getChildAt(0).getWidth() - relLayout.getWidth())/2, 0);
+            }
+        });
 
     }
 
@@ -99,11 +103,12 @@ public class Ingredients extends Activity {
 
         int ingrNum = availableIngredients.size();
         Integer r = new Integer((int) (Math.random() * ingrNum));
-        String ingredient = availableIngredients.get(r);
+        Integer ingredientNum = availableIngredients.get(r);
+        String ingredient = ingredientsMap.get(ingredientNum);
         b.setText(ingredient);
 
-        suggestedIngredients.add(ingredient);
-        availableIngredients.remove(r);
+        suggestedIngredients.add(ingredientNum);
+        availableIngredients.remove(ingredientNum);
 
     }
 
@@ -129,46 +134,6 @@ public class Ingredients extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*class IngredientAdapter extends ArrayAdapter {
 
-        HashMap<String, Integer> map = new HashMap<>();
-
-        public IngredientAdapter (HashMap<String, Integer> map) {
-            this.map = map;
-        }
-
-        @Override
-        public int getCount() {
-            return map.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = getLayoutInflater();
-            View row = inflater.inflate(R.layout.list_layout, parent, false);
-
-            TextView nameView = (TextView) row.findViewById(R.id.name);
-            TextView manufacturerView = (TextView) row.findViewById(R.id.manufacturer);
-            TextView latitudeView = (TextView) row.findViewById(R.id.latitude);
-            TextView longitudeView = (TextView) row.findViewById(R.id.longitude);
-
-            nameView.setText(starships.get(position).getName());
-            manufacturerView.setText(starships.get(position).getManufacturer());
-            latitudeView.setText(((Double) starships.get(position).getLatitude()).toString());
-            longitudeView.setText(((Double)starships.get(position).getLongitude()).toString());
-
-            return row;
-        }
-    }*/
 
 }

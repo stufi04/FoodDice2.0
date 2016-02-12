@@ -151,26 +151,11 @@
                                 android:id="@+id/button7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
                                 android:textColor="#0D4D4D" />
-
-                        </LinearLayout>
-                    </HorizontalScrollView>
-
-                    <HorizontalScrollView
-                        android:id="@+id/horizontalScrollView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/horizontalScrollView"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="5dp"
-                        android:scrollbars="none">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
 
                             <Button
                                 android:id="@+id/button8"
@@ -196,52 +181,12 @@
                                 android:id="@+id/button10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
                                 android:textColor="#0D4D4D" />
 
-                            <Button
-                                android:id="@+id/button11"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="5dp"
-                                android:background="#44FFFFFF"
-                                android:paddingLeft="3dp"
-                                android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
-
-                            <Button
-                                android:id="@+id/button12"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="5dp"
-                                android:background="#44FFFFFF"
-                                android:paddingLeft="3dp"
-                                android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
-
-                            <Button
-                                android:id="@+id/button13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="5dp"
-                                android:background="#44FFFFFF"
-                                android:paddingLeft="3dp"
-                                android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
-
-                            <Button
-                                android:id="@+id/button14"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="#44FFFFFF"
-                                android:paddingLeft="3dp"
-                                android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
                         </LinearLayout>
-
                     </HorizontalScrollView>
 
                 </RelativeLayout>
