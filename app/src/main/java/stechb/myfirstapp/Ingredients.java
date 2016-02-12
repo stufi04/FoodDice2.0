@@ -15,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class Ingredients extends Activity {
     HashMap<Integer, String> ingredientsMap = new HashMap<>();
     ArrayList<Integer> availableIngredients;
     ArrayList<Integer> suggestedIngredients = new ArrayList<>();
+    ArrayList<Integer> chosenIngredients = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,13 +104,37 @@ public class Ingredients extends Activity {
         Button b = (Button) findViewById(resID);
 
         int ingrNum = availableIngredients.size();
+
+        if (ingrNum == 0) {b.setVisibility(b.GONE); return;}
+
         Integer r = new Integer((int) (Math.random() * ingrNum));
         Integer ingredientNum = availableIngredients.get(r);
         String ingredient = ingredientsMap.get(ingredientNum);
         b.setText(ingredient);
+        b.setTag(R.id.buttonID, buttonNum);
+        b.setTag(R.id.ingredientID, ingredientNum);
 
         suggestedIngredients.add(ingredientNum);
         availableIngredients.remove(ingredientNum);
+
+    }
+
+    public void suggestedChosen (View view) {
+
+        Integer chosen = (Integer) view.getTag(R.id.ingredientID);
+        suggestedIngredients.remove(chosen);
+        chosenIngredients.add(chosen);
+
+        Integer buttonNum = (Integer) view.getTag(R.id.buttonID);
+        takeRandomSuggestion(buttonNum);
+
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
+        Button b = (Button) inflater.inflate(R.layout.ingredient_button_layout, null);
+        b.setTag(R.id.ingredientID, chosen);
+        b.setText(ingredientsMap.get(chosen));
+
+        LinearLayout layout = (LinearLayout) findViewById(R.id.chosenSet);
+        layout.addView(b);
 
     }
 

@@ -95,7 +95,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button2"
@@ -105,7 +106,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button3"
@@ -115,7 +117,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button4"
@@ -125,7 +128,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button5"
@@ -135,7 +139,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button6"
@@ -145,7 +150,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button7"
@@ -155,7 +161,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button8"
@@ -165,7 +172,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button9"
@@ -175,7 +183,8 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                             <Button
                                 android:id="@+id/button10"
@@ -184,10 +193,30 @@
                                 android:background="#44FFFFFF"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D" />
+                                android:textColor="#0D4D4D"
+                                android:onClick="suggestedChosen"/>
 
                         </LinearLayout>
                     </HorizontalScrollView>
+
+                    <TextView
+                        android:id="@+id/txtChosen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Chosen:"
+                        android:layout_marginTop="50dp"
+                        android:layout_below="@+id/horizontalScrollView"
+                        android:textColor="#0D4D4D"
+                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                    <LinearLayout
+                        android:id="@+id/chosenSet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtChosen"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
 
                 </RelativeLayout>
 
