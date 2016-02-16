@@ -209,14 +209,19 @@
                         android:textColor="#0D4D4D"
                         android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-                    <LinearLayout
-                        android:id="@+id/chosenSet"
+                    <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/txtChosen"
-                        android:orientation="horizontal">
+                        android:layout_below="@+id/txtChosen">
 
-                    </LinearLayout>
+                        <org.apmem.tools.layouts.FlowLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/chosenSet">
+                        </org.apmem.tools.layouts.FlowLayout>
+
+                    </ScrollView>
 
                 </RelativeLayout>
 

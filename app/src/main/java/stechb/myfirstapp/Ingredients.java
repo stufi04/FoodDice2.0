@@ -2,6 +2,7 @@ package stechb.myfirstapp;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,8 +18,11 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TabHost;
 import android.widget.TextView;
+
+import org.apmem.tools.layouts.FlowLayout;
 
 import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
@@ -64,11 +68,11 @@ public class Ingredients extends Activity {
 
                 for (int i = 0; i < 2; i++) {
                     TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-                    tv.setShadowLayer(0,0,0,Color.WHITE);
+                    tv.setShadowLayer(0, 0, 0, Color.WHITE);
                 }
 
                 TextView tv = (TextView) tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).findViewById(android.R.id.title);
-                tv.setShadowLayer(10,1,1,Color.WHITE);;
+                tv.setShadowLayer(10, 1, 1, Color.WHITE);
 
             }
         });
@@ -77,13 +81,13 @@ public class Ingredients extends Activity {
         ingredientsMap = db.getIngredientsMap();
         availableIngredients = new ArrayList<>(ingredientsMap.keySet());
 
-        for(int i=1;i<=10;i++) {
-            takeRandomSuggestion((Integer)i);
+        for (int i = 1; i <= 10; i++) {
+            takeRandomSuggestion((Integer) i);
         }
 
         AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         String[] ingredients = ingredientsMap.values().toArray(new String[ingredientsMap.size()]);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, ingredients);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ingredients);
         actv.setAdapter(adapter);
 
         final HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
@@ -91,7 +95,7 @@ public class Ingredients extends Activity {
             @Override
             public void run() {
                 RelativeLayout relLayout = (RelativeLayout) findViewById(R.id.searchTab);
-                scrollView.scrollTo((scrollView.getChildAt(0).getWidth() - relLayout.getWidth())/2, 0);
+                scrollView.scrollTo((scrollView.getChildAt(0).getWidth() - relLayout.getWidth()) / 2, 0);
             }
         });
 
@@ -105,7 +109,10 @@ public class Ingredients extends Activity {
 
         int ingrNum = availableIngredients.size();
 
-        if (ingrNum == 0) {b.setVisibility(b.GONE); return;}
+        if (ingrNum == 0) {
+            b.setVisibility(b.GONE);
+            return;
+        }
 
         Integer r = new Integer((int) (Math.random() * ingrNum));
         Integer ingredientNum = availableIngredients.get(r);
@@ -119,24 +126,33 @@ public class Ingredients extends Activity {
 
     }
 
-    public void suggestedChosen (View view) {
+    public void suggestedChosen(View view) {
 
+        // remove from suggested, add to chosen
         Integer chosen = (Integer) view.getTag(R.id.ingredientID);
         suggestedIngredients.remove(chosen);
         chosenIngredients.add(chosen);
 
+        // create a new random suggestion in the place of this one
         Integer buttonNum = (Integer) view.getTag(R.id.buttonID);
         takeRandomSuggestion(buttonNum);
 
+        // inflate a new button and set its text and tag
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
         Button b = (Button) inflater.inflate(R.layout.ingredient_button_layout, null);
         b.setTag(R.id.ingredientID, chosen);
         b.setText(ingredientsMap.get(chosen));
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.chosenSet);
+        // add button to the linear layout
+        FlowLayout layout = (FlowLayout) findViewById(R.id.chosenSet);
         layout.addView(b);
 
-    }
+        // set margins to the button
+        FlowLayout.LayoutParams buttonLayoutParams = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
+        buttonLayoutParams.setMargins(0, 8, 8, 0);
+        b.setLayoutParams(buttonLayoutParams);
+
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,7 +175,6 @@ public class Ingredients extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
