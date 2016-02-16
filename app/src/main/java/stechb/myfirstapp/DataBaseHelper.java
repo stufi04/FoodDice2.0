@@ -149,18 +149,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Integer> getRecipesByIngredients(int type, ArrayList<Integer> ingredients ) {
+    public ArrayList<Integer> getRecipesByIngredients(boolean type,boolean all, ArrayList<Integer> ingredients ) {
         try {
-
+            String query;
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
-
-            String query = "select R._id, count(I._id) from Recipes R, recipesIngredients C where (";
-            for(Integer i : ingredients){
-                query += ", C.ingredientID = " + i;
+            if(type == false) {
+                query = "select R._id, count(C.ingredientId) from recipes R, recipesIngredients C where ( 0";
+                for (Integer i : ingredients) {
+                    query += "OR C.ingredientID = " + i;
+                }
+                query += ") and C.recipeID = R._id group by R._id order by count(C.ingredientId) desc ";
             }
-            query += ") and C.ingredientID = I._id and C.recipeID = R._id group by R._id order by count(I._id) desc ";
+            else{
+                query = "select id,c,c1 from (select r._id r, count(i.recipeID) c1 FROM recipesIngredients i, recipes r where i.recipeID = r._id group by r._id), (select R._id id, count(C.ingredientId) c from recipes R, recipesIngredients C where (0";
+                for (Integer i : ingredients) {
+                    query += "OR C.ingredientID = " + i;
+                }
+                query += ") and C.recipeID = R._id group by R._id order by count(C.ingredientId) desc) where r = id AND c = c1 ";
 
+            }
             Cursor c = db.rawQuery(query, null);
 
             ArrayList<Integer> recipes = new ArrayList<Integer>();
@@ -169,7 +177,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             int l = ingredients.size();
 
-            if(type == 0) {
+            if(all == false) {
                 while (!c.isAfterLast() && (c.getInt(1) > l - 3)) {
 
                     recipes.add(c.getInt(0));
@@ -177,7 +185,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
                 }
             }
-            if(type == 1){
+            if(all == true){
                 while (!c.isAfterLast() && (c.getInt(1) == l )) {
 
                     recipes.add(c.getInt(0));
