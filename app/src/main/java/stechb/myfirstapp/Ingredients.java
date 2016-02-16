@@ -2,29 +2,21 @@ package stechb.myfirstapp;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import org.apmem.tools.layouts.FlowLayout;
 
-import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -137,6 +129,12 @@ public class Ingredients extends Activity {
         Integer buttonNum = (Integer) view.getTag(R.id.buttonID);
         takeRandomSuggestion(buttonNum);
 
+        addButtonToLayout(chosen);
+
+    }
+
+    public void addButtonToLayout (int chosen) {
+
         // inflate a new button and set its text and tag
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
         Button b = (Button) inflater.inflate(R.layout.ingredient_button_layout, null);
@@ -151,8 +149,18 @@ public class Ingredients extends Activity {
         FlowLayout.LayoutParams buttonLayoutParams = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
         buttonLayoutParams.setMargins(0, 8, 8, 0);
         b.setLayoutParams(buttonLayoutParams);
+    }
 
-}
+    public void removeFromChosen (View view) {
+
+        // remove from chosen, add to available
+        Integer clicked = (Integer) view.getTag(R.id.ingredientID);
+        chosenIngredients.remove(clicked);
+        availableIngredients.add(clicked);
+
+        view.setVisibility(View.GONE);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
