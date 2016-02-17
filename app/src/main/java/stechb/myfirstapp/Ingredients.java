@@ -1,9 +1,10 @@
 package stechb.myfirstapp;
 
 import android.app.Activity;
+import android.content.Loader;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -86,7 +88,6 @@ public class Ingredients extends Activity {
 
         final AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         ArrayList<String> ingredients = new ArrayList<>(ingredientsMap.values());
-        //String[] ingredients = ingredientsMap.values().toArray(new String[ingredientsMap.size()]);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ingredients);
         actv.setAdapter(adapter);
 
@@ -99,8 +100,12 @@ public class Ingredients extends Activity {
                 adapter.remove(text);
                 actv.setAdapter(adapter);
                 actv.setText("");
-                addButtonToLayout(chosen);
+                addButtonToLayout(chosen, (FlowLayout) findViewById(R.id.chosenSet));
                 updateSuggestions(chosen);
+                //reset button in all ingredients
+                Button b = (Button) findViewById(chosen);
+                b.setEnabled(false);
+                b.setBackgroundColor(Color.parseColor("#66888888"));
             }
         });
 
@@ -112,6 +117,45 @@ public class Ingredients extends Activity {
                 scrollView.scrollTo((scrollView.getChildAt(0).getWidth() - relLayout.getWidth()) / 2, 0);
             }
         });
+
+
+        //All ingredients tab filling
+
+        String[] categories = {"Meat",
+                "Seafood",
+                "Vegetable",
+                "Fruit",
+                "Dairy",
+                "Sauce",
+                "Essentials",
+                "Spices",
+                "Sweet",
+                "Others",
+                "Nuts"};
+        for(int i = 1; i<= categories.length;i++){
+            ArrayList<Integer> ingr = db.getIngredientsByCAt(i);
+            LinearLayout ll =(LinearLayout) findViewById(R.id.allIngredients);
+            TextView textView = new TextView(this);
+            textView.setText(categories[i - 1]);
+            textView.setTextColor(Color.parseColor("#0D4D4D"));
+
+            textView.setTextSize(20);
+            LinearLayout.LayoutParams lastTxtParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lastTxtParams.setMargins(0,20,0,0);
+            textView.setLayoutParams(lastTxtParams);
+            textView.setGravity(Gravity.CENTER_HORIZONTAL);
+            textView.invalidate();
+            ll.addView(textView);
+            LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
+            FlowLayout fl  = (FlowLayout) inflater.inflate(R.layout.flow_layout, null);
+            fl.setLayoutParams(lastTxtParams);
+            fl.setGravity(Gravity.CENTER_HORIZONTAL);
+            for(int ingredient : ingr){
+                addButtonToLayout(ingredient,fl);
+            }
+            ll.addView(fl);
+        }
+
 
     }
 
@@ -164,22 +208,26 @@ public class Ingredients extends Activity {
         Integer chosen = (Integer) view.getTag(R.id.ingredientID);
         suggestedIngredients.remove(chosen);
         chosenIngredients.add(chosen);
+        Button b = (Button) findViewById(chosen);
+        b.setEnabled(false);
+        b.setBackgroundColor(Color.parseColor("#66888888"));
 
         // create a new random suggestion in the place of this one
         Integer buttonNum = (Integer) view.getTag(R.id.buttonID);
         takeRandomSuggestion(buttonNum);
+        FlowLayout layout = (FlowLayout) findViewById(R.id.chosenSet);
 
         // remove from autocomplete
         AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         ArrayAdapter<String> adapter = (ArrayAdapter<String>) actv.getAdapter();
         adapter.remove(ingredientsMap.get(chosen));
         actv.setAdapter(adapter);
-
-        addButtonToLayout(chosen);
+        
+        addButtonToLayout(chosen, layout);
 
     }
 
-    public void addButtonToLayout (int chosen) {
+    public void addButtonToLayout (int chosen, FlowLayout layout) {
 
         // inflate a new button and set its text and tag
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
@@ -188,13 +236,34 @@ public class Ingredients extends Activity {
         b.setText(ingredientsMap.get(chosen));
 
         // add button to the linear layout
-        FlowLayout layout = (FlowLayout) findViewById(R.id.chosenSet);
+
         layout.addView(b);
 
         // set margins to the button
         FlowLayout.LayoutParams buttonLayoutParams = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
         buttonLayoutParams.setMargins(0, 8, 8, 0);
         b.setLayoutParams(buttonLayoutParams);
+        if (layout != findViewById(R.id.chosenSet)){
+            b.setId(chosen);
+            b.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Integer tag = (Integer) v.getTag(R.id.ingredientID);
+                    v.setBackgroundColor(Color.parseColor("#66888888"));
+                    chosenIngredients.add(tag);
+                    addButtonToLayout(tag, (FlowLayout) findViewById(R.id.chosenSet));
+                    v.setEnabled(false);
+                    updateSuggestions(tag);
+
+                    // remove from autocomplete
+                    AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+                    ArrayAdapter<String> adapter = (ArrayAdapter<String>) actv.getAdapter();
+                    adapter.remove(ingredientsMap.get(tag));
+                    actv.setAdapter(adapter);
+
+
+                }
+            });
+        }
     }
 
     public void removeFromChosen (View view) {
@@ -209,6 +278,10 @@ public class Ingredients extends Activity {
         ArrayAdapter<String> adapter = (ArrayAdapter<String>) actv.getAdapter();
         adapter.add(ingredientsMap.get(clicked));
         actv.setAdapter(adapter);
+        //Reset button in all ingredients
+        Button b = (Button) findViewById(clicked);
+        b.setEnabled(true);
+        b.setBackgroundColor(Color.parseColor("#44FFFFFF"));
 
         view.setVisibility(View.GONE);
 

@@ -149,6 +149,36 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public ArrayList<Integer> getIngredientsByCAt(int cat) {
+        try {
+
+            createDataBase();
+            SQLiteDatabase db = getReadableDatabase();
+
+            String query = "SELECT _id FROM ingredients WHERE category =";
+            query += " " + cat;
+
+            Cursor c = db.rawQuery(query, null);
+
+            ArrayList<Integer> recipes = new ArrayList<Integer>();
+
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                recipes.add(c.getInt(0));
+                c.moveToNext();
+            }
+
+            c.close();
+            db.close();
+
+            return recipes;
+        } catch (Exception e) {
+            e = new Exception("cannot get meals from DB");
+        }
+        return null;
+
+    }
+
     public ArrayList<Integer> getRecipesByIngredients(boolean type,boolean all, ArrayList<Integer> ingredients ) {
         try {
             String query;

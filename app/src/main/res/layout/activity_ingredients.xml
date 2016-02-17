@@ -57,7 +57,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"
                             android:ems="15"
-                            android:hint="Search for ingredients" />
+                            android:hint="Search for ingredients"
+                            android:textColor="#0D4D4D"/>
 
                         <ImageView
                             android:id="@+id/imageView"
@@ -223,7 +224,10 @@
                         <org.apmem.tools.layouts.FlowLayout xmlns:android="http://schemas.android.com/apk/res/android"
                             android:id="@+id/chosenSet"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></org.apmem.tools.layouts.FlowLayout>
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                        </org.apmem.tools.layouts.FlowLayout>
 
                     </ScrollView>
 
@@ -233,7 +237,23 @@
                     android:id="@+id/listTab"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtChosen">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/allIngredients"
+                            >
+
+                        </LinearLayout>
+
+                    </ScrollView>
+                </LinearLayout>
 
             </FrameLayout>
 
