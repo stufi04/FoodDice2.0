@@ -3,10 +3,12 @@ package stechb.myfirstapp;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import org.apmem.tools.layouts.FlowLayout;
 
+import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,6 +27,7 @@ import java.util.HashMap;
 public class Ingredients extends Activity {
 
     HashMap<Integer, String> ingredientsMap = new HashMap<>();
+    HashMap<String, Integer> invertedMap = new HashMap<>();
     ArrayList<Integer> availableIngredients;
     ArrayList<Integer> suggestedIngredients = new ArrayList<>();
     ArrayList<Integer> chosenIngredients = new ArrayList<>();
@@ -72,15 +76,33 @@ public class Ingredients extends Activity {
         DataBaseHelper db = new DataBaseHelper(this);
         ingredientsMap = db.getIngredientsMap();
         availableIngredients = new ArrayList<>(ingredientsMap.keySet());
+        for(Integer id : availableIngredients) {
+            invertedMap.put(ingredientsMap.get(id), id);
+        }
 
         for (int i = 1; i <= 10; i++) {
             takeRandomSuggestion((Integer) i);
         }
 
-        AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
-        String[] ingredients = ingredientsMap.values().toArray(new String[ingredientsMap.size()]);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ingredients);
+        final AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        ArrayList<String> ingredients = new ArrayList<>(ingredientsMap.values());
+        //String[] ingredients = ingredientsMap.values().toArray(new String[ingredientsMap.size()]);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ingredients);
         actv.setAdapter(adapter);
+
+        actv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String text = adapterView.getItemAtPosition(position).toString();
+                Integer chosen = invertedMap.get(text);
+                availableIngredients.remove(chosen);
+                adapter.remove(text);
+                actv.setAdapter(adapter);
+                actv.setText("");
+                addButtonToLayout(chosen);
+                updateSuggestions(chosen);
+            }
+        });
 
         final HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
         scrollView.post(new Runnable() {
@@ -90,6 +112,24 @@ public class Ingredients extends Activity {
                 scrollView.scrollTo((scrollView.getChildAt(0).getWidth() - relLayout.getWidth()) / 2, 0);
             }
         });
+
+    }
+
+    public void updateSuggestions (Integer chosen) {
+
+        for (int i = 1; i <= 10; i++) {
+
+            Integer I = (Integer) i;
+            String buttonID = "button" + I.toString();
+            int resID = getResources().getIdentifier(buttonID, "id", "stechb.myfirstapp");
+            Button b = (Button) findViewById(resID);
+
+            if (b.getTag(R.id.ingredientID) == chosen) {
+                takeRandomSuggestion(I);
+                break;
+            }
+
+        }
 
     }
 
@@ -129,6 +169,12 @@ public class Ingredients extends Activity {
         Integer buttonNum = (Integer) view.getTag(R.id.buttonID);
         takeRandomSuggestion(buttonNum);
 
+        // remove from autocomplete
+        AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        ArrayAdapter<String> adapter = (ArrayAdapter<String>) actv.getAdapter();
+        adapter.remove(ingredientsMap.get(chosen));
+        actv.setAdapter(adapter);
+
         addButtonToLayout(chosen);
 
     }
@@ -157,6 +203,12 @@ public class Ingredients extends Activity {
         Integer clicked = (Integer) view.getTag(R.id.ingredientID);
         chosenIngredients.remove(clicked);
         availableIngredients.add(clicked);
+
+        // add to autocomplete
+        AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        ArrayAdapter<String> adapter = (ArrayAdapter<String>) actv.getAdapter();
+        adapter.add(ingredientsMap.get(clicked));
+        actv.setAdapter(adapter);
 
         view.setVisibility(View.GONE);
 

@@ -40,10 +40,16 @@
                     android:paddingTop="@dimen/activity_vertical_margin">
 
                     <RelativeLayout
+                        android:id="@+id/layoutSearchField"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/layoutSearchField">
+                        android:layout_centerHorizontal="true">
+
+                        <LinearLayout
+                            android:layout_width="0px"
+                            android:layout_height="0px"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
 
                         <AutoCompleteTextView
                             android:id="@+id/autoCompleteTextView"
@@ -69,11 +75,11 @@
                         android:id="@+id/txtSuggested"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Suggested:"
-                        android:layout_marginTop="50dp"
                         android:layout_below="@+id/layoutSearchField"
-                        android:textColor="#0D4D4D"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:layout_marginTop="50dp"
+                        android:text="Suggested:"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#0D4D4D" />
 
                     <HorizontalScrollView
                         android:id="@+id/horizontalScrollView"
@@ -93,10 +99,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button2"
@@ -104,10 +110,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button3"
@@ -115,10 +121,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button4"
@@ -126,10 +132,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button5"
@@ -137,10 +143,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button6"
@@ -148,10 +154,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button7"
@@ -159,10 +165,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button8"
@@ -170,10 +176,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button9"
@@ -181,20 +187,20 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="5dp"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                             <Button
                                 android:id="@+id/button10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="#44FFFFFF"
+                                android:onClick="suggestedChosen"
                                 android:paddingLeft="3dp"
                                 android:paddingRight="3dp"
-                                android:textColor="#0D4D4D"
-                                android:onClick="suggestedChosen"/>
+                                android:textColor="#0D4D4D" />
 
                         </LinearLayout>
                     </HorizontalScrollView>
@@ -203,23 +209,21 @@
                         android:id="@+id/txtChosen"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chosen:"
-                        android:layout_marginTop="50dp"
                         android:layout_below="@+id/horizontalScrollView"
-                        android:textColor="#0D4D4D"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        android:layout_marginTop="50dp"
+                        android:text="Chosen:"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#0D4D4D" />
 
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txtChosen">
 
-                        <org.apmem.tools.layouts.FlowLayout
-                            xmlns:android="http://schemas.android.com/apk/res/android"
+                        <org.apmem.tools.layouts.FlowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/chosenSet"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/chosenSet">
-                        </org.apmem.tools.layouts.FlowLayout>
+                            android:layout_height="wrap_content"></org.apmem.tools.layouts.FlowLayout>
 
                     </ScrollView>
 
