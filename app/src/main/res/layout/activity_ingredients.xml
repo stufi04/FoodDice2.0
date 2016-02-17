@@ -58,7 +58,8 @@
                             android:layout_marginTop="30dp"
                             android:ems="15"
                             android:hint="Search for ingredients"
-                            android:textColor="#0D4D4D"/>
+                            android:textColor="#0D4D4D"
+                            android:textColorHint="#0D4D4D"/>
 
                         <ImageView
                             android:id="@+id/imageView"
