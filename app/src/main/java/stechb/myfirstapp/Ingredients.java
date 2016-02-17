@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Loader;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -78,7 +79,7 @@ public class Ingredients extends Activity {
         DataBaseHelper db = new DataBaseHelper(this);
         ingredientsMap = db.getIngredientsMap();
         availableIngredients = new ArrayList<>(ingredientsMap.keySet());
-        for (Integer id : availableIngredients) {
+        for(Integer id : availableIngredients) {
             invertedMap.put(ingredientsMap.get(id), id);
         }
 
@@ -120,37 +121,40 @@ public class Ingredients extends Activity {
 
 
         //All ingredients tab filling
-        String[] categories = {"Meat",
-                "Seafood",
-                "Vegetable",
-                "Fruit",
-                "Dairy",
-                "Sauce",
-                "Essentials",
-                "Spices",
-                "Sweet",
-                "Others",
-                "Nuts"};
-        for (int i = 1; i <= categories.length; i++) {
-            ArrayList<Integer> ingr = db.getIngredientsByCAt(i);
-            LinearLayout ll = (LinearLayout) findViewById(R.id.allIngredients);
+
+        ArrayList<Pair<String,Integer>> categories = new ArrayList<>();
+        categories.add(new Pair("Essentials",7));
+        categories.add(new Pair("Meat",1));
+        categories.add(new Pair("Seafood",2));
+        categories.add(new Pair("Vegetable",3));
+        categories.add(new Pair("Fruit",4));
+        categories.add(new Pair("Dairy",5));
+        categories.add(new Pair("Spices",8));
+        categories.add(new Pair("Sauce",6));
+        categories.add(new Pair("Nuts",11));
+        categories.add(new Pair("Sweet",9));
+        categories.add(new Pair("Others",10));
+
+        for(int i = 1; i<= categories.size();i++){
+            ArrayList<Integer> ingr = db.getIngredientsByCAt(categories.get(i-1).second);
+            LinearLayout ll =(LinearLayout) findViewById(R.id.allIngredients);
             TextView textView = new TextView(this);
-            textView.setText(categories[i - 1]);
+            textView.setText(categories.get(i - 1).first);
             textView.setTextColor(Color.parseColor("#0D4D4D"));
 
             textView.setTextSize(20);
             LinearLayout.LayoutParams lastTxtParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lastTxtParams.setMargins(0, 20, 0, 0);
+            lastTxtParams.setMargins(0,20,0,0);
             textView.setLayoutParams(lastTxtParams);
             textView.setGravity(Gravity.CENTER_HORIZONTAL);
             textView.invalidate();
             ll.addView(textView);
             LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
-            FlowLayout fl = (FlowLayout) inflater.inflate(R.layout.flow_layout, null);
+            FlowLayout fl  = (FlowLayout) inflater.inflate(R.layout.flow_layout, null);
             fl.setLayoutParams(lastTxtParams);
             fl.setGravity(Gravity.CENTER_HORIZONTAL);
-            for (int ingredient : ingr) {
-                addButtonToLayout(ingredient, fl);
+            for(int ingredient : ingr){
+                addButtonToLayout(ingredient,fl);
             }
             ll.addView(fl);
         }
@@ -158,7 +162,7 @@ public class Ingredients extends Activity {
 
     }
 
-    public void updateSuggestions(Integer chosen) {
+    public void updateSuggestions (Integer chosen) {
 
         for (int i = 1; i <= 10; i++) {
 
@@ -221,12 +225,12 @@ public class Ingredients extends Activity {
         ArrayAdapter<String> adapter = (ArrayAdapter<String>) actv.getAdapter();
         adapter.remove(ingredientsMap.get(chosen));
         actv.setAdapter(adapter);
-
+        
         addButtonToLayout(chosen, layout);
 
     }
 
-    public void addButtonToLayout(int chosen, FlowLayout layout) {
+    public void addButtonToLayout (int chosen, FlowLayout layout) {
 
         // inflate a new button and set its text and tag
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
@@ -242,7 +246,7 @@ public class Ingredients extends Activity {
         FlowLayout.LayoutParams buttonLayoutParams = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
         buttonLayoutParams.setMargins(0, 8, 8, 0);
         b.setLayoutParams(buttonLayoutParams);
-        if (layout != findViewById(R.id.chosenSet)) {
+        if (layout != findViewById(R.id.chosenSet)){
             b.setId(chosen);
             b.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -265,7 +269,7 @@ public class Ingredients extends Activity {
         }
     }
 
-    public void removeFromChosen(View view) {
+    public void removeFromChosen (View view) {
 
         // remove from chosen, add to available
         Integer clicked = (Integer) view.getTag(R.id.ingredientID);
