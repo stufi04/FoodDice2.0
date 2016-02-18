@@ -185,18 +185,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             createDataBase();
             SQLiteDatabase db = getReadableDatabase();
             if(type == false) {
-                query = "select R._id, count(C.ingredientId) from recipes R, recipesIngredients C where ( 0";
+                query = "select R._id, count(C.ingredientId) from recipes R, recipesIngredients C where (0";
                 for (Integer i : ingredients) {
-                    query += "OR C.ingredientID = " + i;
+                    query += " OR C.ingredientID = " + i;
                 }
-                query += ") and C.recipeID = R._id group by R._id order by count(C.ingredientId) desc ";
+                query += ") and C.recipeID = R._id group by R._id order by count(C.ingredientId) desc ;";
             }
             else{
                 query = "select id,c,c1 from (select r._id r, count(i.recipeID) c1 FROM recipesIngredients i, recipes r where i.recipeID = r._id group by r._id), (select R._id id, count(C.ingredientId) c from recipes R, recipesIngredients C where (0";
                 for (Integer i : ingredients) {
-                    query += "OR C.ingredientID = " + i;
+                    query += " OR C.ingredientID = " + i;
                 }
-                query += ") and C.recipeID = R._id group by R._id order by count(C.ingredientId) desc) where r = id AND c = c1 ";
+                query += ") and C.recipeID = R._id group by R._id order by count(C.ingredientId) desc) where r = id AND c = c1; ";
 
             }
             Cursor c = db.rawQuery(query, null);

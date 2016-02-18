@@ -1,6 +1,7 @@
 package stechb.myfirstapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.Loader;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,11 +15,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apmem.tools.layouts.FlowLayout;
 
@@ -170,7 +173,6 @@ public class Ingredients extends Activity {
             String buttonID = "button" + I.toString();
             int resID = getResources().getIdentifier(buttonID, "id", "stechb.myfirstapp");
             Button b = (Button) findViewById(resID);
-
             if (b.getTag(R.id.ingredientID) == chosen) {
                 takeRandomSuggestion(I);
                 break;
@@ -312,5 +314,21 @@ public class Ingredients extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void search(View view){
+        CheckBox cbAll = (CheckBox) findViewById(R.id.all);
+        CheckBox cbOnly = (CheckBox) findViewById(R.id.only);
+        DataBaseHelper db = new DataBaseHelper(this);
+
+        boolean all = cbAll.isChecked();
+        boolean only = cbOnly.isChecked();
+
+        ArrayList<Integer> recipes = db.getRecipesByIngredients(only, all, chosenIngredients);
+        if(!recipes.isEmpty()) {
+            Intent toShowChosen = new Intent(this, ShowChosen.class);
+            toShowChosen.putExtra("recipes", recipes);
+            startActivity(toShowChosen);
+        }
+        else Toast.makeText(this.getBaseContext(),"No recipes matching your query",Toast.LENGTH_LONG).show();
+    }
 
 }

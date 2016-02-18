@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -28,7 +30,8 @@ public class ShowChosen extends Activity{
         setContentView(R.layout.chosen_show);
 
         Intent intent = getIntent();
-        qType = intent.getStringExtra("queryType");
+        if (intent.getStringExtra("queryType")!=null) qType = intent.getStringExtra("queryType");
+        else recipes = intent.getIntegerArrayListExtra("recipes");
 
         swipeMethod();
 
@@ -40,9 +43,10 @@ public class ShowChosen extends Activity{
             }
         });
 
-        recipes = getResultList();
+        if (qType!=null) recipes = getResultList();
         shuffleList();
         id = showNewRandomMeal();
+        Toast.makeText(this.getBaseContext(), "Swipe for new suggestion, Tap for more details", Toast.LENGTH_LONG).show();
 
     }
 
