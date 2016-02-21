@@ -245,14 +245,16 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="15dp"
                             android:text="All these present"
-                            android:textColor="#0D4D4D" />
+                            android:textColor="#0D4D4D"
+                            android:buttonTint="#0D4D4D"/>
 
                         <CheckBox
                             android:id="@+id/only"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Only these present"
-                            android:textColor="#0D4D4D" />
+                            android:textColor="#0D4D4D"
+                            android:buttonTint="#0D4D4D" />
 
                     </LinearLayout>
 
