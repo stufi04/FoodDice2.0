@@ -263,7 +263,7 @@
                         android:layout_height="match_parent"
                         android:layout_below="@+id/txtChosen"
                         android:layout_above="@+id/searchOptions"
-                        android:background="@drawable/border">
+                        >
 
                         <org.apmem.tools.layouts.FlowLayout xmlns:android="http://schemas.android.com/apk/res/android"
                             android:id="@+id/chosenSet"

@@ -102,6 +102,7 @@ public class Ingredients extends Activity {
                 String text = adapterView.getItemAtPosition(position).toString();
                 Integer chosen = invertedMap.get(text);
                 availableIngredients.remove(chosen);
+                chosenIngredients.add(chosen);
                 adapter.remove(text);
                 actv.setAdapter(adapter);
                 actv.setText("");
@@ -342,7 +343,7 @@ public class Ingredients extends Activity {
             toShowChosen.putExtra("recipes", recipes);
             startActivity(toShowChosen);
         }
-        else Toast.makeText(this.getBaseContext(),"No recipes matching your query",Toast.LENGTH_LONG).show();
+        else Toast.makeText(this.getBaseContext(),"No recipes matching your query",Toast.LENGTH_SHORT).show();
     }
 
 }

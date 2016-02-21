@@ -46,7 +46,7 @@ public class ShowChosen extends Activity{
         if (qType!=null) recipes = getResultList();
         shuffleList();
         id = showNewRandomMeal();
-        Toast.makeText(this.getBaseContext(), "Swipe for new suggestion, Tap for more details", Toast.LENGTH_LONG).show();
+        Toast.makeText(this.getBaseContext(), "Swipe for new suggestion, Tap for details", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -116,15 +116,7 @@ public class ShowChosen extends Activity{
     }
     public ArrayList<Integer> getResultList() {
 
-        /*try {
-            db.createDataBase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        db.openDataBase();*/
         recipes = db.getResultList(qType);
-        //db.close();
-
         return recipes;
 
 
