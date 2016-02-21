@@ -35,7 +35,9 @@
                 <RelativeLayout
                     android:id="@+id/searchTab"
                     android:layout_width="match_parent"
-                    android:layout_height="501dp"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
                     android:orientation="vertical"
                     android:paddingTop="@dimen/activity_vertical_margin">
 
@@ -45,12 +47,6 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true">
 
-                        <LinearLayout
-                            android:layout_width="0px"
-                            android:layout_height="0px"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true" />
-
                         <AutoCompleteTextView
                             android:id="@+id/autoCompleteTextView"
                             android:layout_width="wrap_content"
@@ -59,7 +55,7 @@
                             android:ems="15"
                             android:hint="Search for ingredients"
                             android:textColor="#0D4D4D"
-                            android:textColorHint="#0D4D4D"/>
+                            android:textColorHint="#0D4D4D" />
 
                         <ImageView
                             android:id="@+id/imageView"
@@ -77,13 +73,14 @@
                         android:id="@+id/txtSuggested"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="false"
+                        android:layout_below="@+id/layoutSearchField"
+                        android:layout_marginTop="50dp"
                         android:text="Suggested:"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#0D4D4D"
-                        android:layout_below="@+id/layoutSearchField"
-                        android:layout_alignParentRight="false"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentLeft="true" />
+                        android:textColor="#0D4D4D" />
 
                     <HorizontalScrollView
                         android:id="@+id/horizontalScrollView"
@@ -213,59 +210,72 @@
                         android:id="@+id/txtChosen"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/horizontalScrollView"
+                        android:layout_marginTop="50dp"
                         android:text="Chosen:"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:layout_below="@+id/horizontalScrollView"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
+                        android:textColor="#0D4D4D" />
+
+                    <Button
+                        android:id="@+id/searchButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:onClick="search"
+                        android:layout_marginBottom="5dp"
+                        android:text="Search"
+                        android:textColor="#0D4D4D" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/searchButton"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="50dp"
+                        android:id="@+id/searchOptions"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:text="All these are present"
+                            android:textColor="#0D4D4D" />
+
+                        <CheckBox
+                            android:id="@+id/only"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Only these are present"
+                            android:textColor="#0D4D4D" />
+
+                    </LinearLayout>
 
                     <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/txtChosen">
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txtChosen"
+                        android:layout_above="@+id/searchOptions"
+                        android:background="@drawable/border">
 
                         <org.apmem.tools.layouts.FlowLayout xmlns:android="http://schemas.android.com/apk/res/android"
                             android:id="@+id/chosenSet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="3dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="3dp"
                             android:gravity="center">
 
                         </org.apmem.tools.layouts.FlowLayout>
 
                     </ScrollView>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Search"
-                        android:id="@+id/searchButton"
-                        android:onClick="search"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:textColor="#0D4D4D" />
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="All of these"
-                        android:id="@+id/all"
-                        android:layout_alignTop="@+id/searchButton"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:textColor="#0D4D4D" />
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" Only these"
-                        android:id="@+id/only"
-                        android:layout_alignTop="@+id/searchButton"
-                        android:layout_alignRight="@+id/layoutSearchField"
-                        android:layout_alignEnd="@+id/layoutSearchField"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:textColor="#0D4D4D" />
 
                 </RelativeLayout>
 
@@ -274,17 +284,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txtChosen">
 
                         <LinearLayout
-                            android:orientation="vertical"
+                            android:id="@+id/allIngredients"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/allIngredients"
-                            android:gravity="center_horizontal">
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
 
                         </LinearLayout>
 

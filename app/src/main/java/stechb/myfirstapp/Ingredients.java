@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -113,6 +114,15 @@ public class Ingredients extends Activity {
             }
         });
 
+        actv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
         final HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
         scrollView.post(new Runnable() {
             @Override
@@ -124,7 +134,6 @@ public class Ingredients extends Activity {
 
 
         //All ingredients tab filling
-
         ArrayList<Pair<String,Integer>> categories = new ArrayList<>();
         categories.add(new Pair("Essentials",7));
         categories.add(new Pair("Meat",1));
@@ -290,6 +299,11 @@ public class Ingredients extends Activity {
 
         view.setVisibility(View.GONE);
 
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override
