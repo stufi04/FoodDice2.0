@@ -33,11 +33,11 @@ import java.util.HashMap;
 
 public class Ingredients extends Activity {
 
-    HashMap<Integer, String> ingredientsMap = new HashMap<>();
-    HashMap<String, Integer> invertedMap = new HashMap<>();
-    ArrayList<Integer> availableIngredients;
-    ArrayList<Integer> suggestedIngredients = new ArrayList<>();
-    ArrayList<Integer> chosenIngredients = new ArrayList<>();
+    private HashMap<Integer, String> ingredientsMap = new HashMap<>();
+    private HashMap<String, Integer> invertedMap = new HashMap<>();
+    private ArrayList<Integer> availableIngredients;
+    private ArrayList<Integer> suggestedIngredients = new ArrayList<>();
+    private ArrayList<Integer> chosenIngredients = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
