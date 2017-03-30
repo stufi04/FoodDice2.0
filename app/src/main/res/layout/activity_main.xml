@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/backgroundMainActivity"
     android:layout_width="match_parent"
@@ -10,56 +11,76 @@
         android:layout_width="fill_parent"
         android:layout_height="300dp"
         android:id="@+id/title_image"/> -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:src="@drawable/fulllogo3" />
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnRandom"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignLeft="@+id/btnAdvanced"
-        android:layout_alignRight="@+id/btnAdvanced"
-        android:onClick="chooseRandom"
-        android:text="Give Me Random"
-        android:textColor="#0D4D4D" />
+        <Button
+            android:id="@+id/btnRandom"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignLeft="@+id/btnAdvanced"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/btnAdvanced"
+            android:background="#FFFFFF"
+            android:onClick="chooseRandom"
+            android:text="Give me random"
+            android:textColor="#0D4D4D"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/txtChoose"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Or choose by:"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/btnRandom"
-        android:textColor="#0D4D4D"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        <TextView
+            android:id="@+id/txtChoose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnRandom"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="Or choose by:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#0D4D4D" />
 
-    <Button
-        android:id="@+id/btnAdvanced"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_below="@+id/txtChoose"
-        android:layout_marginTop="5dp"
-        android:onClick="setRandom"
-        android:text="Category"
-        android:textColor="#0D4D4D" />
+        <Button
+            android:id="@+id/btnAdvanced"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@+id/txtChoose"
+            android:layout_marginTop="5dp"
+            android:background="#FFFFFF"
+            android:onClick="setRandom"
+            android:text="Category"
+            android:textColor="#0D4D4D"
+            android:textSize="16sp" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignLeft="@+id/btnAdvanced"
-        android:layout_alignRight="@+id/btnAdvanced"
-        android:layout_below="@+id/btnAdvanced"
-        android:layout_marginTop="5dp"
-        android:onClick="openSettings"
-        android:text="Ingredients"
-        android:textColor="#0D4D4D" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignLeft="@+id/btnAdvanced"
+            android:layout_alignRight="@+id/btnAdvanced"
+            android:layout_below="@+id/btnAdvanced"
+            android:layout_marginTop="5dp"
+            android:background="#FFFFFF"
+            android:onClick="openSettings"
+            android:text="Ingredients"
+            android:textColor="#0D4D4D"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

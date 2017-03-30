@@ -1,5 +1,0 @@
-C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\classes\debug
-C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-333cacb1e75cf72b7ea5235c4877a12f2df9b0ee.jar
-C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-cad0413609827927e3952df3a7b1da5cdf60630a.jar
-C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\pre-dexed\debug\classes-3abdc98ac152b6a1b224d3cbece04ed605eb86a4.jar
-C:\Users\iange_000\Documents\GitHub\FoodDice2.0\app\build\intermediates\pre-dexed\debug\classes-523f70ba0152f0ad9065c1ef78784e59c564b837.jar
